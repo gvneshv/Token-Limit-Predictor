@@ -7,7 +7,8 @@ A small, local FastAPI web app that estimates prompt size, likely response range
 - Estimates prompt tokens with a deterministic heuristic.
 - Uses visible complexity signals, such as code and task verbs, to estimate response length.
 - Returns results in memory only. Prompts are not written to a database or log by this application.
-- Includes an accessible responsive interface with light and dark system-theme support.
+- Includes an accessible responsive interface with English/Ukrainian language control and light, dark, or system theme preferences. Preferences stay only in the browser's local storage.
+- Lets the user choose an estimate profile. Model names provide context only; they do not query live plan limits.
 
 ## Important limitation
 
@@ -40,4 +41,3 @@ The application deliberately has no database, accounts, analytics, third-party A
 - `app/main.py`: HTTP routes and static/template wiring.
 - `app/templates` and `app/static`: Browser interface.
 - `tests`: Fast unit tests for the estimation logic.
-

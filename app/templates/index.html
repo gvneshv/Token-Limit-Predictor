@@ -10,39 +10,61 @@
 <body>
   <main class="shell">
     <header>
-      <p class="eyebrow">Prompt planning, without retention</p>
-      <h1>Know the shape of your request before you send it.</h1>
-      <p class="intro">Paste a prompt to estimate its size, expected response, and whether splitting it may help.</p>
+      <div class="header-row">
+        <p class="eyebrow" data-i18n="eyebrow">Prompt planning, without retention</p>
+        <div class="preferences" aria-label="Display preferences">
+          <label class="sr-only" for="language" data-i18n="languageLabel">Language</label>
+          <select id="language" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="uk">UA</option>
+          </select>
+          <label class="sr-only" for="theme" data-i18n="themeLabel">Theme</label>
+          <select id="theme" aria-label="Theme">
+            <option value="system" data-i18n="themeSystem">System</option>
+            <option value="light" data-i18n="themeLight">Light</option>
+            <option value="dark" data-i18n="themeDark">Dark</option>
+          </select>
+        </div>
+      </div>
+      <h1 data-i18n="headline">Know the shape of your request before you send it.</h1>
+      <p class="intro" data-i18n="intro">Paste a prompt to estimate its size, expected response, and whether splitting it may help.</p>
     </header>
 
     <section class="workspace" aria-label="Token prediction tool">
       <form id="predictor-form">
-        <div class="field-heading"><label for="message">Your request</label><span id="counter">0 / 50,000</span></div>
-        <textarea id="message" name="message" maxlength="50000" placeholder="Describe what you need help with..." required></textarea>
+        <div class="field-heading"><label for="message" data-i18n="yourRequest">Your request</label><span id="counter">0 / 50,000</span></div>
+        <textarea id="message" name="message" maxlength="50000" placeholder="Describe what you need help with..." required data-i18n-placeholder="placeholder"></textarea>
+        <label class="model-choice" for="model"><span data-i18n="estimateProfile">Estimate profile</span>
+          <select id="model" name="model">
+            <option>GPT-5 Free</option>
+            <option>GPT-5 mini</option>
+            <option>GPT-5 Thinking</option>
+            <option>GPT-4.1</option>
+          </select>
+        </label>
         <div class="form-footer">
-          <p>Your text is analyzed only to produce this estimate. It is not saved.</p>
-          <button type="submit">Estimate request <span aria-hidden="true">→</span></button>
+          <p data-i18n="privacy">Your text is analyzed only to produce this estimate. It is not saved.</p>
+          <button type="submit"><span data-i18n="submit">Estimate request</span> <span aria-hidden="true">→</span></button>
         </div>
       </form>
 
       <section class="results" id="results" aria-live="polite" aria-label="Prediction results">
-        <div class="empty-state" id="empty-state"><span class="spark">✦</span><p>Your estimate will appear here.</p></div>
+        <div class="empty-state" id="empty-state"><span class="spark">✦</span><p data-i18n="empty">Your estimate will appear here.</p></div>
         <div id="result-content" hidden>
-          <div class="result-top"><p class="eyebrow">Model</p><strong id="model"></strong></div>
+          <div class="result-top"><p class="eyebrow" data-i18n="model">Model</p><strong id="result-model"></strong></div>
           <dl>
-            <div><dt>Your request</dt><dd id="request-tokens"></dd></div>
-            <div><dt>Expected response</dt><dd id="response-tokens"></dd></div>
-            <div><dt>Difficulty level</dt><dd id="difficulty"></dd></div>
-            <div><dt>Daily-limit likelihood</dt><dd id="probability"></dd></div>
+            <div><dt data-i18n="yourRequest">Your request</dt><dd id="request-tokens"></dd></div>
+            <div><dt data-i18n="expectedResponse">Expected response</dt><dd id="response-tokens"></dd></div>
+            <div><dt data-i18n="difficulty">Difficulty level</dt><dd id="difficulty"></dd></div>
+            <div><dt data-i18n="limitLikelihood">Daily-limit likelihood</dt><dd id="probability"></dd></div>
           </dl>
-          <div class="recommendation"><p class="eyebrow">Recommendation</p><strong id="recommendation"></strong></div>
+          <div class="recommendation"><p class="eyebrow" data-i18n="recommendationLabel">Recommendation</p><strong id="recommendation"></strong></div>
           <p class="note" id="note"></p>
         </div>
       </section>
     </section>
-    <footer>Estimates are heuristic, not an official model-limit guarantee.</footer>
+    <footer data-i18n="footer">Estimates are heuristic, not an official model-limit guarantee.</footer>
   </main>
   <script src="/static/app.js" defer></script>
 </body>
 </html>
-
