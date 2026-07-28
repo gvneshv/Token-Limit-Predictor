@@ -1,43 +1,28 @@
 # Token Limit Predictor
 
-A small, local FastAPI web app that estimates prompt size, likely response range, difficulty, and whether a request may be worth splitting.
+A private, static web app that estimates prompt size, likely response range, reasoning overhead, difficulty, and whether a request may be worth splitting.
 
 ## What it does
 
-- Estimates prompt tokens with a deterministic heuristic.
-- Uses visible complexity signals, such as code and task verbs, to estimate response length.
-- Returns results in memory only. Prompts are not written to a database or log by this application.
-- Includes an accessible responsive interface with English/Ukrainian language control and light, dark, or system theme preferences. Preferences stay only in the browser's local storage.
-- Lets the user choose an estimate profile. Model names provide context only; they do not query live plan limits.
+- Runs entirely in the browser with no server, database, account, analytics, or network calls.
+- Uses deterministic input, complexity, and model-profile heuristics.
+- Provides 13 profiles across OpenAI, Anthropic, Google, Groq, Perplexity, and Cursor.
+- Supports English/Ukrainian plus light, dark, and system-theme preferences, stored only in browser local storage.
 
 ## Important limitation
 
-This is a planning aid, not an official OpenAI token or rate-limit calculator. Actual token use and plan limits depend on the chosen model, the full conversation, service conditions, and response settings.
+This is a planning aid, not an official token or rate-limit calculator. Model specifications change and account limits depend on the plan, conversation, service conditions, and settings. Cursor Auto is a model router, not one fixed model, so its profile is deliberately conservative.
 
-## Run locally
+## Use and deploy
 
-Requires Python 3.11+ and Poetry.
-
-```bash
-poetry install
-poetry run uvicorn app.main:app --reload
-```
-
-Open `http://127.0.0.1:8000`.
-
-## Test
-
-```bash
-poetry run pytest
-```
+Open `index.html` in a browser, or publish this repository through GitHub Pages. No build step or environment variables are required.
 
 ## Security and privacy
 
-The application deliberately has no database, accounts, analytics, third-party API calls, or prompt logging. Keep it behind HTTPS when deployed and set proxy headers only through a trusted reverse proxy. If storage, authentication, or analytics are added later, document retention, obtain consent, validate authorization per record, and add rate limits and security headers before release.
+The application deliberately has no database, accounts, analytics, third-party API calls, or prompt logging. It does not transmit pasted text. If storage, authentication, or analytics are added later, document retention, obtain consent, validate authorization per record, and add server-side rate limits and security headers before release.
 
 ## Project layout
 
-- `app/predictor.py`: Pure prediction heuristic.
-- `app/main.py`: HTTP routes and static/template wiring.
-- `app/templates` and `app/static`: Browser interface.
-- `tests`: Fast unit tests for the estimation logic.
+- `index.html`: GitHub Pages entry point and accessible UI structure.
+- `assets/app.js`: Local predictor, profile references, translations, and preferences.
+- `assets/styles.css`: Responsive visual design and theme tokens.

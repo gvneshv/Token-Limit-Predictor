@@ -2,8 +2,11 @@
 
 ## Unreleased
 
-- Added model-profile, language, and theme controls.
-- Kept request and result panels independently sized so a detailed result does not enlarge the paste field.
+- Rebuilt the app as a static GitHub Pages-compatible website with no backend or dependencies.
+- Added 13 documented model profiles across OpenAI, Anthropic, Google, Groq, Perplexity, and Cursor.
+- Corrected the empty-result state so it is replaced, rather than displayed above, an estimate.
+- Reworked the estimation formula so profile response and reasoning factors change medium and high difficulty outcomes.
+- Reworked the dark theme and made background gradients non-repeating.
 
 ## 0.1.0 - 2026-07-28
 

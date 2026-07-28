@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A private, browser-only estimator for AI prompt and response size.">
+  <title>Token Limit Predictor</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <div class="header-row">
+        <a class="brand" href="/" aria-label="Token Limit Predictor home"><span>✦</span> Token Lens</a>
+        <div class="preferences" aria-label="Display preferences">
+          <label class="sr-only" for="language" data-i18n="languageLabel">Language</label>
+          <select id="language" aria-label="Language"><option value="en">EN</option><option value="uk">UA</option></select>
+          <label class="sr-only" for="theme" data-i18n="themeLabel">Theme</label>
+          <select id="theme" aria-label="Theme"><option value="system" data-i18n="themeSystem">System</option><option value="light" data-i18n="themeLight">Light</option><option value="dark" data-i18n="themeDark">Dark</option></select>
+        </div>
+      </div>
+      <p class="eyebrow" data-i18n="eyebrow">Private prompt planning</p>
+      <h1 data-i18n="headline">Estimate before you send.</h1>
+      <p class="intro" data-i18n="intro">See how your request may behave with different AI model profiles. Your text stays in this browser.</p>
+    </header>
+
+    <section class="workspace" aria-label="Token prediction tool">
+      <form id="predictor-form" class="request-card">
+        <div class="field-heading"><label for="message" data-i18n="yourRequest">Your request</label><span id="counter">0 / 50,000</span></div>
+        <textarea id="message" maxlength="50000" required data-i18n-placeholder="placeholder" placeholder="Describe what you need help with..."></textarea>
+        <label class="model-choice" for="model"><span data-i18n="estimateProfile">AI model profile</span>
+          <select id="model" name="model"></select>
+        </label>
+        <p class="profile-note" id="profile-note"></p>
+        <div class="form-footer">
+          <p data-i18n="privacy">Your request is never sent or saved. This local estimate is not a provider quota check.</p>
+          <button type="submit"><span data-i18n="submit">Estimate request</span> <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+
+      <section class="results" aria-live="polite" aria-label="Prediction results">
+        <div class="empty-state" id="empty-state"><span class="spark">✦</span><p data-i18n="empty">Your estimate will appear here.</p></div>
+        <div id="result-content" hidden>
+          <div class="result-top"><div><p class="eyebrow" data-i18n="model">Model profile</p><strong id="result-model"></strong></div><span class="provider" id="provider"></span></div>
+          <dl>
+            <div><dt data-i18n="yourRequest">Your request</dt><dd id="request-tokens"></dd></div>
+            <div><dt data-i18n="expectedResponse">Expected response</dt><dd id="response-tokens"></dd></div>
+            <div><dt data-i18n="estimatedWork">Estimated total work</dt><dd id="work-tokens"></dd></div>
+            <div><dt data-i18n="difficulty">Difficulty level</dt><dd id="difficulty"></dd></div>
+            <div><dt data-i18n="limitLikelihood">Limit pressure</dt><dd id="probability"></dd></div>
+          </dl>
+          <div class="recommendation"><p class="eyebrow" data-i18n="recommendationLabel">Recommendation</p><strong id="recommendation"></strong></div>
+          <p class="note" id="note"></p>
+        </div>
+      </section>
+    </section>
+
+    <details class="methodology"><summary data-i18n="methodologySummary">How this estimate works</summary><p data-i18n="methodologyText">The calculator counts a local approximation of your input, detects complexity signals, then applies a published model-profile context and output budget. “Estimated total work” includes a conservative reasoning allowance for thinking models. It does not call any model or know your account limits.</p><div id="sources"></div></details>
+    <footer data-i18n="footer">Local-only estimates. Not an official token, context-window, or account-limit guarantee.</footer>
+  </main>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
