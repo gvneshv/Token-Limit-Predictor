@@ -1,0 +1,3 @@
+# Permit search engines to crawl this public static application.
+User-agent: *
+Allow: /

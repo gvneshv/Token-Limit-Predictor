@@ -1,63 +1,226 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A private, browser-only estimator for AI prompt and response size.">
-  <title>Token Limit Predictor</title>
-  <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
-  <main class="shell">
-    <header class="page-header">
-      <div class="header-row">
-        <a class="brand" href="/" aria-label="Token Limit Predictor home"><span>✦</span> Token Lens</a>
-        <div class="preferences" aria-label="Display preferences">
-          <label class="sr-only" for="language" data-i18n="languageLabel">Language</label>
-          <select id="language" aria-label="Language"><option value="en">EN</option><option value="uk">UA</option></select>
-          <label class="sr-only" for="theme" data-i18n="themeLabel">Theme</label>
-          <select id="theme" aria-label="Theme"><option value="system" data-i18n="themeSystem">System</option><option value="light" data-i18n="themeLight">Light</option><option value="dark" data-i18n="themeDark">Dark</option></select>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A private, browser-only estimator for AI prompt and response size."
+    />
+    <!-- SEO text metadata does not depend on the eventual hosting domain. -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Token Limit Predictor contributors" />
+    <meta name="theme-color" content="#f5f7fb" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Token Lens" />
+    <meta property="og:title" content="Token Lens | AI prompt estimator" />
+    <meta property="og:description" content="Estimate prompt size, response range, and model-specific token pressure locally in your browser." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="uk_UA" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Token Lens | AI prompt estimator" />
+    <meta name="twitter:description" content="Estimate prompt size, response range, and model-specific token pressure locally in your browser." />
+    <link rel="manifest" href="site.webmanifest" />
+    <title>Token Limit Predictor</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <!-- The whole application is static so it can run from GitHub Pages or a local file. -->
+    <main class="shell">
+      <header class="page-header">
+        <div class="header-row">
+          <a class="brand" href="./" aria-label="Token Limit Predictor home"
+            ><span>✦</span> Token Lens</a
+          >
+          <!-- These browser-only preferences are enhanced and persisted by assets/app.js. -->
+          <div class="preferences" aria-label="Display preferences">
+            <label class="sr-only" for="language" data-i18n="languageLabel"
+              >Language</label
+            >
+            <select id="language" aria-label="Language">
+              <option value="en">EN</option>
+              <option value="uk">UA</option>
+            </select>
+            <label class="sr-only" for="theme" data-i18n="themeLabel"
+              >Theme</label
+            >
+            <select id="theme" aria-label="Theme">
+              <option value="system" data-i18n="themeSystem">System</option>
+              <option value="light" data-i18n="themeLight">Light</option>
+              <option value="dark" data-i18n="themeDark">Dark</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <p class="eyebrow" data-i18n="eyebrow">Private prompt planning</p>
-      <h1 data-i18n="headline">Estimate before you send.</h1>
-      <p class="intro" data-i18n="intro">See how your request may behave with different AI model profiles. Your text stays in this browser.</p>
-    </header>
+        <p class="eyebrow" data-i18n="eyebrow">Private prompt planning</p>
+        <h1 data-i18n="headline">Estimate before you send.</h1>
+        <p class="intro" data-i18n="intro">
+          See how your request may behave with different AI model profiles. Your
+          text stays in this browser.
+        </p>
+      </header>
 
-    <section class="workspace" aria-label="Token prediction tool">
-      <form id="predictor-form" class="request-card">
-        <div class="field-heading"><label for="message" data-i18n="yourRequest">Your request</label><span id="counter">0 / 50,000</span></div>
-        <textarea id="message" maxlength="50000" required data-i18n-placeholder="placeholder" placeholder="Describe what you need help with..."></textarea>
-        <label class="model-choice" for="model"><span data-i18n="estimateProfile">AI model profile</span>
-          <select id="model" name="model"></select>
-        </label>
-        <p class="profile-note" id="profile-note"></p>
-        <div class="form-footer">
-          <p data-i18n="privacy">Your request is never sent or saved. This local estimate is not a provider quota check.</p>
-          <button type="submit"><span data-i18n="submit">Estimate request</span> <span aria-hidden="true">→</span></button>
-        </div>
-      </form>
+      <section class="workspace" aria-label="Token prediction tool">
+        <form id="predictor-form" class="request-card">
+          <div class="field-heading">
+            <label for="message" data-i18n="yourRequest">Your request</label
+            ><span id="counter">0 / 50,000</span>
+          </div>
+          <textarea
+            id="message"
+            maxlength="50000"
+            required
+            data-i18n-placeholder="placeholder"
+            placeholder="Describe what you need help with..."
+          ></textarea>
+          <label class="model-choice" for="model"
+            ><span data-i18n="estimateProfile">AI model profile</span>
+            <!-- Keep model choices in HTML as a no-script fallback. JavaScript rebuilds this list from the same profiles. -->
+            <select id="model" name="model">
+              <optgroup label="OpenAI">
+                <option value="gpt-5-free">GPT-5 Free</option>
+                <option value="gpt-5-mini">GPT-5 mini</option>
+                <option value="gpt-5-1">GPT-5.1</option>
+                <option value="gpt-4-1">GPT-4.1</option>
+              </optgroup>
+              <optgroup label="Anthropic">
+                <option value="claude-sonnet-4">Claude Sonnet 4</option>
+                <option value="claude-opus-4">Claude Opus 4</option>
+                <option value="claude-haiku">Claude Haiku</option>
+              </optgroup>
+              <optgroup label="Google">
+                <option value="gemini-3-1-pro">Gemini 3.1 Pro</option>
+                <option value="gemini-3-flash">Gemini 3 Flash</option>
+                <option value="gemini-3-1-flash-lite">Gemini 3.1 Flash-Lite</option>
+              </optgroup>
+              <optgroup label="Groq">
+                <option value="llama-3-3">Llama 3.3 70B on Groq</option>
+                <option value="gpt-oss-120b">GPT-OSS 120B on Groq</option>
+              </optgroup>
+              <optgroup label="Perplexity">
+                <option value="sonar">Perplexity Sonar</option>
+              </optgroup>
+              <optgroup label="Cursor">
+                <option value="cursor-auto">Cursor Auto</option>
+              </optgroup>
+              <optgroup label="xAI">
+                <option value="grok-4-3">Grok 4.3</option>
+              </optgroup>
+              <optgroup label="Mistral">
+                <option value="mistral-large-3">Mistral Large 3</option>
+              </optgroup>
+              <optgroup label="Cohere">
+                <option value="command-a">Cohere Command A</option>
+              </optgroup>
+            </select>
+          </label>
+          <p class="profile-note" id="profile-note"></p>
+          <div class="form-footer">
+            <p data-i18n="privacy">
+              Your request is never sent or saved. This local estimate is not a
+              provider quota check.
+            </p>
+            <button type="submit">
+              <span data-i18n="submit">Estimate request</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
 
-      <section class="results" aria-live="polite" aria-label="Prediction results">
-        <div class="empty-state" id="empty-state"><span class="spark">✦</span><p data-i18n="empty">Your estimate will appear here.</p></div>
-        <div id="result-content" hidden>
-          <div class="result-top"><div><p class="eyebrow" data-i18n="model">Model profile</p><strong id="result-model"></strong></div><span class="provider" id="provider"></span></div>
-          <dl>
-            <div><dt data-i18n="yourRequest">Your request</dt><dd id="request-tokens"></dd></div>
-            <div><dt data-i18n="expectedResponse">Expected response</dt><dd id="response-tokens"></dd></div>
-            <div><dt data-i18n="estimatedWork">Estimated total work</dt><dd id="work-tokens"></dd></div>
-            <div><dt data-i18n="difficulty">Difficulty level</dt><dd id="difficulty"></dd></div>
-            <div><dt data-i18n="limitLikelihood">Limit pressure</dt><dd id="probability"></dd></div>
-          </dl>
-          <div class="recommendation"><p class="eyebrow" data-i18n="recommendationLabel">Recommendation</p><strong id="recommendation"></strong></div>
-          <p class="note" id="note"></p>
-        </div>
+        <section
+          class="results"
+          aria-live="polite"
+          aria-label="Prediction results"
+        >
+          <div class="empty-state" id="empty-state">
+            <span class="spark">✦</span>
+            <p data-i18n="empty">Your estimate will appear here.</p>
+          </div>
+          <div id="result-content" hidden>
+            <div class="result-top">
+              <div>
+                <p class="eyebrow" data-i18n="model">Model profile</p>
+                <strong id="result-model"></strong>
+              </div>
+              <span class="provider" id="provider"></span>
+            </div>
+            <dl>
+              <div>
+                <dt data-i18n="yourRequest">Your request</dt>
+                <dd id="request-tokens"></dd>
+              </div>
+              <div>
+                <dt data-i18n="expectedResponse">Expected response</dt>
+                <dd id="response-tokens"></dd>
+              </div>
+              <div>
+                <dt data-i18n="estimatedWork">Estimated total work</dt>
+                <dd id="work-tokens"></dd>
+              </div>
+              <div>
+                <dt data-i18n="difficulty">Difficulty level</dt>
+                <dd id="difficulty"></dd>
+              </div>
+              <div>
+                <dt data-i18n="limitLikelihood">Limit pressure</dt>
+                <dd id="probability"></dd>
+              </div>
+            </dl>
+            <div class="recommendation">
+              <p class="eyebrow" data-i18n="recommendationLabel">
+                Recommendation
+              </p>
+              <strong id="recommendation"></strong>
+            </div>
+            <p class="note" id="note"></p>
+          </div>
+        </section>
       </section>
-    </section>
 
-    <details class="methodology"><summary data-i18n="methodologySummary">How this estimate works</summary><p data-i18n="methodologyText">The calculator counts a local approximation of your input, detects complexity signals, then applies a published model-profile context and output budget. “Estimated total work” includes a conservative reasoning allowance for thinking models. It does not call any model or know your account limits.</p><div id="sources"></div></details>
-    <footer data-i18n="footer">Local-only estimates. Not an official token, context-window, or account-limit guarantee.</footer>
-  </main>
-  <script src="assets/app.js" defer></script>
-</body>
+      <!-- Public documentation remains available before JavaScript localizes its labels. -->
+      <details class="methodology">
+        <summary data-i18n="methodologySummary">
+          How this estimate works
+        </summary>
+        <p data-i18n="methodologyText">
+          The calculator counts a local approximation of your input, detects
+          complexity signals, then applies a published model-profile context and
+          output budget. “Estimated total work” includes a conservative
+          reasoning allowance for thinking models. It does not call any model or
+          know your account limits.
+        </p>
+        <div id="sources">
+          <p class="source-title">Profile sources</p>
+          <div class="source-list">
+            <a href="https://platform.openai.com/docs/models" target="_blank" rel="noreferrer">OpenAI</a>
+            <a href="https://docs.anthropic.com/en/docs/about-claude/models" target="_blank" rel="noreferrer">Anthropic</a>
+            <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noreferrer">Google</a>
+            <a href="https://console.groq.com/docs/models" target="_blank" rel="noreferrer">Groq</a>
+            <a href="https://docs.perplexity.ai/docs/sonar/models/sonar" target="_blank" rel="noreferrer">Perplexity</a>
+            <a href="https://docs.cursor.com/guides/selecting-models" target="_blank" rel="noreferrer">Cursor</a>
+            <a href="https://docs.x.ai/developers/models" target="_blank" rel="noreferrer">xAI</a>
+            <a href="https://docs.mistral.ai/models" target="_blank" rel="noreferrer">Mistral</a>
+            <a href="https://docs.cohere.com/docs/command-a" target="_blank" rel="noreferrer">Cohere</a>
+          </div>
+        </div>
+      </details>
+      <!-- Structured data gives search engines an unambiguous application description. -->
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Token Lens",
+          "applicationCategory": "UtilitiesApplication",
+          "applicationSubCategory": "AI prompt planning",
+          "operatingSystem": "Any",
+          "isAccessibleForFree": true,
+          "description": "A private browser-only estimator for AI prompt size, response range, and model-specific token pressure."
+        }
+      </script>
+      <footer data-i18n="footer">
+        Local-only estimates. Not an official token, context-window, or
+        account-limit guarantee.
+      </footer>
+    </main>
+    <script src="assets/app.js" defer></script>
+  </body>
 </html>

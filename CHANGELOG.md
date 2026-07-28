@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Replaced the succeeded OpenAI o3 profile with GPT-5.1 and added current Gemini, Grok, Mistral, and Cohere profiles.
+- Added static-site SEO foundations: robots directives, web-app manifest, Open Graph/Twitter text metadata, and JSON-LD application data.
+- Added static fallbacks for model selection and profile-source links.
+- Restored native dropdown indicators, improved headline tracking for Cyrillic, and documented frontend maintenance intent in source comments.
 - Rebuilt the app as a static GitHub Pages-compatible website with no backend or dependencies.
 - Added 13 documented model profiles across OpenAI, Anthropic, Google, Groq, Perplexity, and Cursor.
 - Corrected the empty-result state so it is replaced, rather than displayed above, an estimate.

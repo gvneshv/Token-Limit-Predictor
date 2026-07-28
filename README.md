@@ -6,8 +6,9 @@ A private, static web app that estimates prompt size, likely response range, rea
 
 - Runs entirely in the browser with no server, database, account, analytics, or network calls.
 - Uses deterministic input, complexity, and model-profile heuristics.
-- Provides 13 profiles across OpenAI, Anthropic, Google, Groq, Perplexity, and Cursor.
+- Provides 17 profiles across OpenAI, Anthropic, Google, Groq, Perplexity, Cursor, xAI, Mistral, and Cohere.
 - Supports English/Ukrainian plus light, dark, and system-theme preferences, stored only in browser local storage.
+- Keeps model and documentation links in the HTML as graceful fallbacks, so essential reference material remains visible even if browser JavaScript is blocked.
 
 ## Important limitation
 
@@ -16,6 +17,8 @@ This is a planning aid, not an official token or rate-limit calculator. Model sp
 ## Use and deploy
 
 Open `index.html` in a browser, or publish this repository through GitHub Pages. No build step or environment variables are required.
+
+Before publishing, set the real GitHub Pages URL in the canonical, Open Graph URL/image, and sitemap files. These fields intentionally stay out of the repository until a real public URL is known.
 
 ## Security and privacy
 

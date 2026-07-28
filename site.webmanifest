@@ -1,0 +1,9 @@
+{
+  "name": "Token Lens",
+  "short_name": "Token Lens",
+  "description": "A private browser-only estimator for AI prompt size and response range.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#4f46e5"
+}
