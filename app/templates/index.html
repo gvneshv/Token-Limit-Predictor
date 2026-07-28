@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estimate prompt tokens and likely response size without storing your text.">
+  <title>Token Limit Predictor</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">Prompt planning, without retention</p>
+      <h1>Know the shape of your request before you send it.</h1>
+      <p class="intro">Paste a prompt to estimate its size, expected response, and whether splitting it may help.</p>
+    </header>
+
+    <section class="workspace" aria-label="Token prediction tool">
+      <form id="predictor-form">
+        <div class="field-heading"><label for="message">Your request</label><span id="counter">0 / 50,000</span></div>
+        <textarea id="message" name="message" maxlength="50000" placeholder="Describe what you need help with..." required></textarea>
+        <div class="form-footer">
+          <p>Your text is analyzed only to produce this estimate. It is not saved.</p>
+          <button type="submit">Estimate request <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+
+      <section class="results" id="results" aria-live="polite" aria-label="Prediction results">
+        <div class="empty-state" id="empty-state"><span class="spark">✦</span><p>Your estimate will appear here.</p></div>
+        <div id="result-content" hidden>
+          <div class="result-top"><p class="eyebrow">Model</p><strong id="model"></strong></div>
+          <dl>
+            <div><dt>Your request</dt><dd id="request-tokens"></dd></div>
+            <div><dt>Expected response</dt><dd id="response-tokens"></dd></div>
+            <div><dt>Difficulty level</dt><dd id="difficulty"></dd></div>
+            <div><dt>Daily-limit likelihood</dt><dd id="probability"></dd></div>
+          </dl>
+          <div class="recommendation"><p class="eyebrow">Recommendation</p><strong id="recommendation"></strong></div>
+          <p class="note" id="note"></p>
+        </div>
+      </section>
+    </section>
+    <footer>Estimates are heuristic, not an official model-limit guarantee.</footer>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
+
