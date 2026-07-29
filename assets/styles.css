@@ -286,6 +286,13 @@ dd {
   flex-wrap: wrap;
   gap: 8px;
 }
+.specs-freshness {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  margin: 0 0 10px;
+  max-width: 780px;
+}
 .source-list a {
   border: 1px solid var(--line);
   border-radius: 99px;

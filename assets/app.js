@@ -1,108 +1,81 @@
 // Public model characteristics used by the local-only estimation heuristic.
+// Context window and max output figures are drawn from each provider's own model docs
+// (linked in the "Profile sources" list in index.html) and were last cross-checked 2026-07-29.
+// Providers revise these figures often - several changed twice in the months prior to this check
+// - so treat exact numbers as approximate and re-verify against the source link before relying on them for capacity planning.
+const PROFILES_LAST_VERIFIED = "2026-07-30";
+
 const profiles = [
   {
     group: "OpenAI",
-    id: "gpt-5-free",
-    name: "GPT-5 Free",
-    context: 128000,
-    output: 16000,
-    responseFactor: 1,
-    reasoningFactor: 1.12,
-    budget: 18000,
-    source: "https://platform.openai.com/docs/models",
-  },
-  {
-    group: "OpenAI",
-    id: "gpt-5-mini",
-    name: "GPT-5 mini",
-    context: 128000,
-    output: 16000,
-    responseFactor: 0.82,
+    id: "gpt-5-6-luna",
+    name: "GPT-5.6 Luna",
+    context: 1050000,
+    output: 128000,
+    responseFactor: 0.85,
     reasoningFactor: 1.05,
-    budget: 28000,
+    budget: 30000,
     source: "https://platform.openai.com/docs/models",
   },
   {
     group: "OpenAI",
-    id: "gpt-5-1",
-    name: "GPT-5.1",
-    context: 128000,
-    output: 32000,
-    responseFactor: 1.2,
-    reasoningFactor: 1.5,
+    id: "gpt-5-6-terra",
+    name: "GPT-5.6 Terra",
+    context: 1050000,
+    output: 128000,
+    responseFactor: 1.05,
+    reasoningFactor: 1.3,
     budget: 42000,
     source: "https://platform.openai.com/docs/models",
   },
   {
     group: "OpenAI",
-    id: "gpt-4-1",
-    name: "GPT-4.1",
-    context: 1000000,
-    output: 32768,
-    responseFactor: 0.92,
-    reasoningFactor: 1,
-    budget: 36000,
+    id: "gpt-5-6-sol",
+    name: "GPT-5.6 Sol",
+    context: 1050000,
+    output: 128000,
+    responseFactor: 1.25,
+    reasoningFactor: 1.6,
+    budget: 55000,
     source: "https://platform.openai.com/docs/models",
   },
   {
     group: "Anthropic",
-    id: "claude-sonnet-4",
-    name: "Claude Sonnet 4",
+    id: "claude-haiku-4-5",
+    name: "Claude Haiku 4.5",
     context: 200000,
     output: 64000,
-    responseFactor: 1.08,
-    reasoningFactor: 1.28,
-    budget: 30000,
-    source: "https://docs.anthropic.com/en/docs/about-claude/models",
+    responseFactor: 0.75,
+    reasoningFactor: 1.1,
+    budget: 24000,
+    source: "https://platform.claude.com/docs/en/about-claude/models/overview",
   },
   {
     group: "Anthropic",
-    id: "claude-opus-4",
-    name: "Claude Opus 4",
-    context: 200000,
-    output: 32000,
-    responseFactor: 1.28,
+    id: "claude-sonnet-5",
+    name: "Claude Sonnet 5",
+    context: 1000000,
+    output: 64000,
+    responseFactor: 1.1,
+    reasoningFactor: 1.3,
+    budget: 34000,
+    source: "https://platform.claude.com/docs/en/about-claude/models/overview",
+  },
+  {
+    group: "Anthropic",
+    id: "claude-opus-4-8",
+    name: "Claude Opus 4.8",
+    context: 1000000,
+    output: 128000,
+    responseFactor: 1.3,
     reasoningFactor: 1.7,
-    budget: 40000,
-    source: "https://docs.anthropic.com/en/docs/about-claude/models",
-  },
-  {
-    group: "Anthropic",
-    id: "claude-haiku",
-    name: "Claude Haiku",
-    context: 200000,
-    output: 8192,
-    responseFactor: 0.7,
-    reasoningFactor: 1,
-    budget: 20000,
-    source: "https://docs.anthropic.com/en/docs/about-claude/models",
+    budget: 46000,
+    source: "https://platform.claude.com/docs/en/about-claude/models/overview",
   },
   {
     group: "Google",
-    id: "gemini-3-1-pro",
-    name: "Gemini 3.1 Pro",
-    context: 1000000,
-    output: 65536,
-    responseFactor: 1.2,
-    reasoningFactor: 1.55,
-    budget: 38000,
-    source: "https://ai.google.dev/gemini-api/docs/models",
-  },
-  {
-    group: "Google",
-    id: "gemini-3-flash",
-    name: "Gemini 3 Flash",
-    context: 1000000,
-    output: 65536,
-    responseFactor: 0.86,
-    reasoningFactor: 1.12,
-    budget: 32000,
-    source: "https://ai.google.dev/gemini-api/docs/models",
-  },
-  {
-    group: "Google",
-    id: "gemini-3-1-flash-lite",
-    name: "Gemini 3.1 Flash-Lite",
+    id: "gemini-3-5-flash-lite",
+    name: "Gemini 3.5 Flash-Lite",
     context: 1000000,
     output: 65536,
     responseFactor: 0.68,
@@ -111,14 +84,36 @@ const profiles = [
     source: "https://ai.google.dev/gemini-api/docs/models",
   },
   {
+    group: "Google",
+    id: "gemini-3-5-flash",
+    name: "Gemini 3.5 Flash",
+    context: 1000000,
+    output: 65536,
+    responseFactor: 0.9,
+    reasoningFactor: 1.2,
+    budget: 34000,
+    source: "https://ai.google.dev/gemini-api/docs/models",
+  },
+  {
+    group: "Google",
+    id: "gemini-3-6-flash",
+    name: "Gemini 3.6 Flash",
+    context: 1000000,
+    output: 65536,
+    responseFactor: 1.05,
+    reasoningFactor: 1.35,
+    budget: 40000,
+    source: "https://ai.google.dev/gemini-api/docs/models",
+  },
+  {
     group: "Groq",
-    id: "llama-3-3",
-    name: "Llama 3.3 70B on Groq",
+    id: "qwen3-6-27b-groq",
+    name: "Qwen3.6 27B on Groq",
     context: 131072,
     output: 32768,
-    responseFactor: 0.8,
-    reasoningFactor: 1,
-    budget: 35000,
+    responseFactor: 0.82,
+    reasoningFactor: 1.05,
+    budget: 33000,
     source: "https://console.groq.com/docs/models",
   },
   {
@@ -145,13 +140,13 @@ const profiles = [
   },
   {
     group: "xAI",
-    id: "grok-4-3",
-    name: "Grok 4.3",
-    context: 1000000,
+    id: "grok-4-5",
+    name: "Grok 4.5",
+    context: 500000,
     output: 64000,
-    responseFactor: 1.14,
-    reasoningFactor: 1.42,
-    budget: 36000,
+    responseFactor: 1.1,
+    reasoningFactor: 1.35,
+    budget: 34000,
     source: "https://docs.x.ai/developers/models",
   },
   {
@@ -167,25 +162,25 @@ const profiles = [
   },
   {
     group: "Cohere",
-    id: "command-a",
-    name: "Cohere Command A",
-    context: 256000,
-    output: 8000,
-    responseFactor: 0.88,
-    reasoningFactor: 1.14,
-    budget: 26000,
-    source: "https://docs.cohere.com/docs/command-a",
+    id: "command-a-plus",
+    name: "Cohere Command A+",
+    context: 128000,
+    output: 64000,
+    responseFactor: 0.95,
+    reasoningFactor: 1.2,
+    budget: 30000,
+    source: "https://docs.cohere.com/docs/command-a-plus",
   },
   {
     group: "Cursor",
-    id: "cursor-auto",
-    name: "Cursor Auto",
+    id: "cursor-router",
+    name: "Cursor Router",
     context: 200000,
     output: 32000,
     responseFactor: 1.03,
     reasoningFactor: 1.25,
     budget: 30000,
-    source: "https://docs.cursor.com/guides/selecting-models",
+    source: "https://cursor.com/help/models-and-usage/available-models",
     routed: true,
   },
 ];
@@ -228,7 +223,9 @@ const text = {
     source: "Profile sources",
     profile: "Context: {context} · max output: {output}",
     routed:
-      "Cursor Auto routes between models, so this is a conservative planning profile.",
+      "Cursor Router routes between models, so this is a conservative planning profile.",
+    specsFreshness:
+      "Model specs last checked {date}. Providers revise context and output limits often - verify against the linked source before relying on exact numbers.",
     recommendationOne: "This should fit as one focused prompt.",
     recommendationParts: "Break the request into {parts} parts.",
     note: "Based on local input analysis and the selected profile. Actual usage depends on instructions, tools, and provider settings.",
@@ -237,7 +234,7 @@ const text = {
     eyebrow: "Приватне планування запитів",
     headline: "Оцініть запит до відправлення.",
     intro:
-      "Подивіться, як запит може поводитись у різних профілях AI. Текст залишається у вашому браузері.",
+      "Подивіться, як запит може поводитись у різних профілях ШІ. Текст залишається у вашому браузері.",
     languageLabel: "Мова",
     themeLabel: "Тема",
     themeSystem: "Системна",
@@ -269,7 +266,9 @@ const text = {
     source: "Джерела профілів",
     profile: "Контекст: {context} · макс. відповідь: {output}",
     routed:
-      "Cursor Auto розподіляє запити між моделями, тому це консервативний профіль планування.",
+      "Cursor Router розподіляє запити між моделями, тому це консервативний профіль планування.",
+    specsFreshness:
+      "Характеристики моделей востаннє перевірено {date}. Провайдери часто змінюють контекст і ліміти відповіді - перевіряйте за посиланням на джерело, перш ніж покладатися на точні цифри.",
     recommendationOne: "Це має вміститись в один сфокусований запит.",
     recommendationParts: "Розділіть запит на {parts} частини.",
     note: "Засновано на локальному аналізі та вибраному профілі. Фактичне використання залежить від інструкцій, інструментів і налаштувань провайдера.",
@@ -307,7 +306,7 @@ function updateProfileNote() {
 }
 /** Rebuild the model selector from profile data while preserving the selection. */
 function populateModels() {
-  const prior = model.value || "gpt-5-free";
+  const prior = model.value || profiles[0].id;
   model.innerHTML = "";
   [...new Set(profiles.map((p) => p.group))].forEach((group) => {
     const optionGroup = document.createElement("optgroup");
@@ -343,6 +342,14 @@ function renderSources() {
   const sources = document.querySelector("#sources");
   sources.replaceChildren(title, list);
 }
+/** Show when the model specs were last checked against provider docs. */
+function updateSpecsFreshness() {
+  const el = document.querySelector("#specs-freshness");
+  if (!el) return;
+  el.textContent = replace(text[locale].specsFreshness, {
+    date: PROFILES_LAST_VERIFIED,
+  });
+}
 /** Apply translated labels and remember the user's language in local storage. */
 function applyLanguage(value) {
   locale = value;
@@ -359,6 +366,7 @@ function applyLanguage(value) {
   counter.textContent = `${format(message.value.length)} / 50,000`;
   updateProfileNote();
   renderSources();
+  updateSpecsFreshness();
 }
 /** Apply and persist the requested visual theme without sending any data. */
 function applyTheme(value) {

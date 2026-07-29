@@ -4,7 +4,7 @@
 
 - Filled in the real GitHub Pages URL across canonical, Open Graph/Twitter, sitemap, and robots.txt.
 - Added a favicon, PWA manifest icon, Open Graph/Twitter share image, sitemap.xml, and MIT license.
-- Replaced the succeeded OpenAI o3 profile with GPT-5.1 and added current Gemini, Grok, Mistral, and Cohere profiles.
+- Refreshed every model profile to each provider's current lineup as of 2026-07-29 (OpenAI GPT-5.6 Luna/Terra/Sol, Anthropic Claude Haiku 4.5/Sonnet 5/Opus 4.8, Google Gemini 3.5/3.6 Flash tiers, xAI Grok 4.5, Cohere Command A+, Groq's Qwen3.6 27B replacing the deprecated Llama 3.3 70B, and Cursor Router replacing Cursor Auto) and added a visible "specs last checked" note plus source-link updates, since provider lineups change every few weeks.
 - Added static-site SEO foundations: robots directives, web-app manifest, Open Graph/Twitter text metadata, and JSON-LD application data.
 - Added static fallbacks for model selection and profile-source links.
 - Restored native dropdown indicators, improved headline tracking for Cyrillic, and documented frontend maintenance intent in source comments.
