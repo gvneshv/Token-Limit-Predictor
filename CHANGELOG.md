@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Filled in the real GitHub Pages URL across canonical, Open Graph/Twitter, sitemap, and robots.txt.
+- Added a favicon, PWA manifest icon, Open Graph/Twitter share image, sitemap.xml, and MIT license.
 - Replaced the succeeded OpenAI o3 profile with GPT-5.1 and added current Gemini, Grok, Mistral, and Cohere profiles.
 - Added static-site SEO foundations: robots directives, web-app manifest, Open Graph/Twitter text metadata, and JSON-LD application data.
 - Added static fallbacks for model selection and profile-source links.
