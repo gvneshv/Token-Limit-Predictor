@@ -51,11 +51,32 @@
             <label class="sr-only" for="theme" data-i18n="themeLabel"
               >Theme</label
             >
-            <select id="theme" aria-label="Theme">
-              <option value="system" data-i18n="themeSystem">System</option>
-              <option value="light" data-i18n="themeLight">Light</option>
-              <option value="dark" data-i18n="themeDark">Dark</option>
-            </select>
+            <button
+              type="button"
+              id="theme"
+              class="theme-toggle"
+              aria-pressed="false"
+            >
+              <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="4.4" fill="currentColor" />
+                <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                  <path d="M12 2.5v3" />
+                  <path d="M12 18.5v3" />
+                  <path d="M4.2 4.2l2.1 2.1" />
+                  <path d="M17.7 17.7l2.1 2.1" />
+                  <path d="M2.5 12h3" />
+                  <path d="M18.5 12h3" />
+                  <path d="M4.2 19.8l2.1-2.1" />
+                  <path d="M17.7 6.3l2.1-2.1" />
+                </g>
+              </svg>
+              <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M20.4 14.7A8.6 8.6 0 1 1 9.3 3.6a7 7 0 0 0 11.1 11.1Z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
         <p class="eyebrow" data-i18n="eyebrow">Private prompt planning</p>
@@ -120,6 +141,41 @@
             </select>
           </label>
           <p class="profile-note" id="profile-note"></p>
+          <div class="context-usage">
+            <div class="context-usage-row">
+              <label for="context-used" data-i18n="contextUsedLabel"
+                >Context already used (optional)</label
+              >
+              <select id="context-unit" aria-label="Unit">
+                <option value="percent" data-i18n="unitPercent">% used</option>
+                <option value="tokens" data-i18n="unitTokens">Tokens used</option>
+              </select>
+            </div>
+            <input
+              type="number"
+              id="context-used"
+              min="0"
+              step="1"
+              inputmode="numeric"
+              data-i18n-placeholder="contextUsedPlaceholder"
+              placeholder="e.g. 40"
+            />
+            <p class="context-help" data-i18n="contextHelp">
+              Some chat interfaces show a context or usage meter — a
+              percentage, a token count, or a "this conversation is getting
+              long" warning — use that number if yours has one. If it
+              doesn't, estimate instead: a fresh chat is close to 0%, a
+              short back-and-forth is roughly 15–30%, a long session is
+              50–70%, and if you've noticed the assistant forgetting
+              earlier details or seen a length warning, treat it as 80%+.
+            </p>
+            <p class="context-help" data-i18n="attachmentsNote">
+              Planning to attach files, images, or other documents too?
+              This estimate can't account for them — we have no way to
+              know their size or content — so treat the result as a floor,
+              not a guarantee.
+            </p>
+          </div>
           <div class="form-footer">
             <p data-i18n="privacy">
               Your request is never sent or saved. This local estimate is not a
@@ -170,6 +226,10 @@
                 <dt data-i18n="limitLikelihood">Limit pressure</dt>
                 <dd id="probability"></dd>
               </div>
+              <div id="context-row" hidden>
+                <dt data-i18n="contextSoFar">Context so far</dt>
+                <dd id="context-summary"></dd>
+              </div>
             </dl>
             <div class="recommendation">
               <p class="eyebrow" data-i18n="recommendationLabel">
@@ -195,8 +255,8 @@
           know your account limits.
         </p>
         <p id="specs-freshness" class="specs-freshness" data-i18n="specsFreshness">
-          Model specs last checked 2026-07-29. Providers revise context and
-          output limits often - verify against the linked source before
+          Model specs last checked 2026-08-01. Providers revise context and
+          output limits often — verify against the linked source before
           relying on exact numbers.
         </p>
         <div id="sources">

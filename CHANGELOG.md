@@ -4,7 +4,10 @@
 
 - Filled in the real GitHub Pages URL across canonical, Open Graph/Twitter, sitemap, and robots.txt.
 - Added a favicon, PWA manifest icon, Open Graph/Twitter share image, sitemap.xml, and MIT license.
-- Refreshed every model profile to each provider's current lineup as of 2026-07-29 (OpenAI GPT-5.6 Luna/Terra/Sol, Anthropic Claude Haiku 4.5/Sonnet 5/Opus 4.8, Google Gemini 3.5/3.6 Flash tiers, xAI Grok 4.5, Cohere Command A+, Groq's Qwen3.6 27B replacing the deprecated Llama 3.3 70B, and Cursor Router replacing Cursor Auto) and added a visible "specs last checked" note plus source-link updates, since provider lineups change every few weeks.
+- Refreshed every model profile to each provider's current lineup as of 2026-08-01 (OpenAI GPT-5.6 Luna/Terra/Sol, Anthropic Claude Haiku 4.5/Sonnet 5/Opus 4.8, Google Gemini 3.5/3.6 Flash tiers, xAI Grok 4.5, Cohere Command A+, Groq's Qwen3.6 27B replacing the deprecated Llama 3.3 70B, and Cursor Router replacing Cursor Auto) and added a visible "specs last checked" note plus source-link updates, since provider lineups change every few weeks.
+- Added an optional "context already used" field (percent or tokens) so returning users can factor an ongoing conversation into the estimate; limit-pressure and the split recommendation now account for it, with a dedicated "start a fresh conversation" recommendation when projected usage is likely close to the model's context window. Added help text on how to find or estimate that number, and a note that attachments (files, images, documents) can't be accounted for.
+- Replaced the System/Light/Dark theme dropdown with a single light/dark toggle button; the initial state still follows the OS preference, an explicit choice just overrides it.
+- Fixed the model-choice field overlapping surrounding text at larger font sizes by stacking its label above the select and adding top margin.
 - Added static-site SEO foundations: robots directives, web-app manifest, Open Graph/Twitter text metadata, and JSON-LD application data.
 - Added static fallbacks for model selection and profile-source links.
 - Restored native dropdown indicators, improved headline tracking for Cyrillic, and documented frontend maintenance intent in source comments.

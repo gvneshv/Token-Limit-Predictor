@@ -1,9 +1,11 @@
 // Public model characteristics used by the local-only estimation heuristic.
-// Context window and max output figures are drawn from each provider's own model docs
-// (linked in the "Profile sources" list in index.html) and were last cross-checked 2026-07-29.
-// Providers revise these figures often - several changed twice in the months prior to this check
-// - so treat exact numbers as approximate and re-verify against the source link before relying on them for capacity planning.
-const PROFILES_LAST_VERIFIED = "2026-07-30";
+// Context window and max output figures are drawn from each provider's own
+// model docs (linked in the "Profile sources" list in index.html) and were
+// last cross-checked 2026-08-01. Providers revise these figures often —
+// several changed twice in the months prior to this check — so treat exact
+// numbers as approximate and re-verify against the source link before
+// relying on them for capacity planning.
+const PROFILES_LAST_VERIFIED = "2026-08-01";
 
 const profiles = [
   {
@@ -194,9 +196,6 @@ const text = {
       "See how your request may behave with different AI model profiles. Your text stays in this browser.",
     languageLabel: "Language",
     themeLabel: "Theme",
-    themeSystem: "System",
-    themeLight: "Light",
-    themeDark: "Dark",
     yourRequest: "Your request",
     placeholder: "Describe what you need help with...",
     estimateProfile: "AI model profile",
@@ -209,6 +208,9 @@ const text = {
     estimatedWork: "Estimated total work",
     difficulty: "Difficulty level",
     limitLikelihood: "Limit pressure",
+    contextSoFar: "Context so far",
+    contextSummary:
+      "{used} / {context} {tokensLabel} ({percent}%) · ~{remaining} left",
     recommendationLabel: "Recommendation",
     methodologySummary: "How this estimate works",
     methodologyText:
@@ -225,21 +227,28 @@ const text = {
     routed:
       "Cursor Router routes between models, so this is a conservative planning profile.",
     specsFreshness:
-      "Model specs last checked {date}. Providers revise context and output limits often - verify against the linked source before relying on exact numbers.",
+      "Model specs last checked {date}. Providers revise context and output limits often — verify against the linked source before relying on exact numbers.",
+    contextUsedLabel: "Context already used (optional)",
+    unitPercent: "% used",
+    unitTokens: "Tokens used",
+    contextUsedPlaceholder: "e.g. 40",
+    contextHelp:
+      "Some chat interfaces show a context or usage meter — a percentage, a token count, or a \u201cthis conversation is getting long\u201d warning — use that number if yours has one. If it doesn't, estimate instead: a fresh chat is close to 0%, a short back-and-forth is roughly 15\u201330%, a long session is 50\u201370%, and if you've noticed the assistant forgetting earlier details or seen a length warning, treat it as 80%+.",
+    attachmentsNote:
+      "Planning to attach files, images, or other documents too? This estimate can't account for them — we have no way to know their size or content — so treat the result as a floor, not a guarantee.",
     recommendationOne: "This should fit as one focused prompt.",
     recommendationParts: "Break the request into {parts} parts.",
+    recommendationFresh:
+      "This conversation is likely close to the model's context limit. Consider starting a fresh conversation or summarizing earlier messages before continuing.",
     note: "Based on local input analysis and the selected profile. Actual usage depends on instructions, tools, and provider settings.",
   },
   uk: {
     eyebrow: "Приватне планування запитів",
     headline: "Оцініть запит до відправлення.",
     intro:
-      "Подивіться, як запит може поводитись у різних профілях ШІ. Текст залишається у вашому браузері.",
+      "Подивіться, як запит може поводитись у різних профілях AI. Текст залишається у вашому браузері.",
     languageLabel: "Мова",
     themeLabel: "Тема",
-    themeSystem: "Системна",
-    themeLight: "Світла",
-    themeDark: "Темна",
     yourRequest: "Ваш запит",
     placeholder: "Опишіть, з чим вам потрібна допомога...",
     estimateProfile: "Профіль AI-моделі",
@@ -252,6 +261,9 @@ const text = {
     estimatedWork: "Оцінена загальна робота",
     difficulty: "Рівень складності",
     limitLikelihood: "Тиск на ліміт",
+    contextSoFar: "Контекст на разі",
+    contextSummary:
+      "{used} / {context} {tokensLabel} ({percent}%) · залишилось ~{remaining}",
     recommendationLabel: "Рекомендація",
     methodologySummary: "Як працює оцінка",
     methodologyText:
@@ -268,9 +280,19 @@ const text = {
     routed:
       "Cursor Router розподіляє запити між моделями, тому це консервативний профіль планування.",
     specsFreshness:
-      "Характеристики моделей востаннє перевірено {date}. Провайдери часто змінюють контекст і ліміти відповіді - перевіряйте за посиланням на джерело, перш ніж покладатися на точні цифри.",
+      "Характеристики моделей востаннє перевірено {date}. Провайдери часто змінюють контекст і ліміти відповіді — перевіряйте за посиланням на джерело, перш ніж покладатися на точні цифри.",
+    contextUsedLabel: "Контекст уже використано (необов’язково)",
+    unitPercent: "% використано",
+    unitTokens: "Токенів використано",
+    contextUsedPlaceholder: "напр. 40",
+    contextHelp:
+      "Деякі чат-інтерфейси показують індикатор контексту чи використання — відсоток, кількість токенів або попередження «розмова стає задовгою» — використайте це число, якщо воно є. Якщо ні, оцініть самостійно: нова розмова — близько 0%, короткий обмін повідомленнями — приблизно 15–30%, довга сесія — 50–70%, а якщо ви помітили, що асистент забуває ранні деталі, або бачили попередження про довжину, вважайте це 80%+.",
+    attachmentsNote:
+      "Плануєте також долучити файли, зображення чи інші документи? Ця оцінка не може їх врахувати — ми не знаємо їхній розмір чи вміст — тож сприймайте результат як мінімум, а не гарантію.",
     recommendationOne: "Це має вміститись в один сфокусований запит.",
     recommendationParts: "Розділіть запит на {parts} частини.",
+    recommendationFresh:
+      "Ця розмова, ймовірно, близька до ліміту контексту моделі. Розгляньте початок нової розмови або стисніть попередні повідомлення, перш ніж продовжити.",
     note: "Засновано на локальному аналізі та вибраному профілі. Фактичне використання залежить від інструкцій, інструментів і налаштувань провайдера.",
   },
 };
@@ -282,6 +304,8 @@ const model = document.querySelector("#model");
 const language = document.querySelector("#language");
 const theme = document.querySelector("#theme");
 const counter = document.querySelector("#counter");
+const contextUsedInput = document.querySelector("#context-used");
+const contextUnit = document.querySelector("#context-unit");
 let locale = localStorage.getItem("tlp-language") || "en";
 // Format counts using the active interface locale.
 const format = (number) =>
@@ -368,10 +392,19 @@ function applyLanguage(value) {
   renderSources();
   updateSpecsFreshness();
 }
-/** Apply and persist the requested visual theme without sending any data. */
+/** Return the theme currently in effect, falling back to the OS preference. */
+function effectiveTheme() {
+  return (
+    document.documentElement.dataset.theme ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light")
+  );
+}
+/** Apply and persist an explicit light/dark choice without sending any data. */
 function applyTheme(value) {
   document.documentElement.dataset.theme = value;
-  theme.value = value;
+  theme.setAttribute("aria-pressed", String(value === "dark"));
   localStorage.setItem("tlp-theme", value);
 }
 /** Estimate input tokens locally from characters, words, and punctuation. */
@@ -382,8 +415,18 @@ function tokens(value) {
     Math.ceil(Math.max(value.length / 4, parts.length / 0.78)),
   );
 }
+/** Resolve the optional "already used" field into a token count for this profile. */
+function resolveContextUsed(profile) {
+  const raw = Number(contextUsedInput.value);
+  if (!contextUsedInput.value || Number.isNaN(raw) || raw <= 0) return 0;
+  if (contextUnit.value === "percent") {
+    const pct = Math.min(Math.max(raw, 0), 100);
+    return Math.round(profile.context * (pct / 100));
+  }
+  return Math.min(Math.max(Math.round(raw), 0), profile.context);
+}
 /** Derive a transparent estimate from prompt complexity and a model profile. */
-function predict(value, profile) {
+function predict(value, profile, usedTokens) {
   const request = tokens(value);
   const lowered = value.toLowerCase();
   const terms = [
@@ -418,11 +461,20 @@ function predict(value, profile) {
     Math.round(55 + request * base * profile.responseFactor * 0.58),
   );
   const work = Math.round(request + max * profile.reasoningFactor);
-  const pressure = work / profile.budget;
+  const workPressure = work / profile.budget;
+  const projected = usedTokens + request + max;
+  const contextRatio = profile.context ? projected / profile.context : 0;
+  const level = (ratio, high, medium) =>
+    ratio > high ? "high" : ratio > medium ? "medium" : "low";
+  const severity = { low: 0, medium: 1, high: 2 };
+  const workLevel = level(workPressure, 0.45, 0.18);
+  const contextLevel = level(contextRatio, 0.9, 0.65);
+  const pressure =
+    severity[contextLevel] > severity[workLevel] ? contextLevel : workLevel;
   const parts =
-    difficulty === "high" || pressure > 0.42
+    difficulty === "high" || workPressure > 0.42 || contextRatio > 0.75
       ? 3
-      : difficulty === "medium" || pressure > 0.2
+      : difficulty === "medium" || workPressure > 0.2 || contextRatio > 0.5
         ? 2
         : 1;
   return {
@@ -431,8 +483,11 @@ function predict(value, profile) {
     max,
     work,
     difficulty,
-    pressure: pressure > 0.45 ? "high" : pressure > 0.18 ? "medium" : "low",
+    pressure,
     parts,
+    usedTokens,
+    remaining: Math.max(0, profile.context - usedTokens),
+    contextRatio,
   };
 }
 /** Update a single text-only result field without injecting markup. */
@@ -445,10 +500,19 @@ message.addEventListener("input", () => {
 });
 model.addEventListener("change", updateProfileNote);
 language.addEventListener("change", () => applyLanguage(language.value));
-theme.addEventListener("change", () => applyTheme(theme.value));
+theme.addEventListener("click", () => {
+  applyTheme(effectiveTheme() === "dark" ? "light" : "dark");
+});
 populateModels();
 applyLanguage(locale);
-applyTheme(localStorage.getItem("tlp-theme") || "system");
+const storedTheme = localStorage.getItem("tlp-theme");
+if (storedTheme) {
+  applyTheme(storedTheme);
+} else {
+  // No explicit choice yet: follow the OS preference (handled in CSS) and
+  // just sync the toggle icon/state to match it.
+  theme.setAttribute("aria-pressed", String(effectiveTheme() === "dark"));
+}
 // Calculate on the next frame so the loading label can paint before the result.
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -457,7 +521,8 @@ form.addEventListener("submit", (event) => {
   button.textContent = text[locale].calculating;
   requestAnimationFrame(() => {
     const profile = selectedProfile();
-    const result = predict(message.value, profile);
+    const usedTokens = resolveContextUsed(profile);
+    const result = predict(message.value, profile, usedTokens);
     const copy = text[locale];
     set("#result-model", profile.name);
     set("#provider", profile.group);
@@ -469,11 +534,29 @@ form.addEventListener("submit", (event) => {
     set("#work-tokens", `${format(result.work)} ${copy.tokens}`);
     set("#difficulty", copy[result.difficulty]);
     set("#probability", copy[result.pressure]);
+    const contextRow = document.querySelector("#context-row");
+    if (usedTokens > 0) {
+      contextRow.hidden = false;
+      set(
+        "#context-summary",
+        replace(copy.contextSummary, {
+          used: format(usedTokens),
+          context: format(profile.context),
+          tokensLabel: copy.tokens,
+          percent: Math.round((usedTokens / profile.context) * 100),
+          remaining: format(result.remaining),
+        }),
+      );
+    } else {
+      contextRow.hidden = true;
+    }
     set(
       "#recommendation",
-      result.parts === 1
-        ? copy.recommendationOne
-        : replace(copy.recommendationParts, { parts: result.parts }),
+      usedTokens > 0 && result.contextRatio > 0.75
+        ? copy.recommendationFresh
+        : result.parts === 1
+          ? copy.recommendationOne
+          : replace(copy.recommendationParts, { parts: result.parts }),
     );
     set("#note", copy.note);
     document.querySelector("#empty-state").hidden = true;

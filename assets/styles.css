@@ -66,7 +66,8 @@ body {
   gap: 8px;
 }
 .preferences select,
-.model-choice select {
+.model-choice select,
+.context-usage select {
   /* Native arrows make it clear that every control is a selectable menu. */
   appearance: auto;
   background: var(--card);
@@ -79,6 +80,40 @@ body {
 }
 .preferences select {
   text-align: center;
+}
+.theme-toggle {
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  height: 33px;
+  justify-content: center;
+  padding: 0;
+  width: 33px;
+}
+.theme-toggle svg {
+  height: 17px;
+  width: 17px;
+}
+.theme-toggle .icon-moon {
+  display: none;
+}
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon {
+    display: block;
+  }
 }
 .eyebrow {
   color: var(--accent);
@@ -168,14 +203,50 @@ textarea::placeholder {
   color: #929cb0;
 }
 .model-choice {
-  align-items: center;
+  align-items: stretch;
   display: flex;
+  flex-direction: column;
   font-size: 0.85rem;
-  gap: 11px;
+  gap: 8px;
+  margin-top: 22px;
+}
+.model-choice select {
+  width: 100%;
 }
 .profile-note {
   line-height: 1.45;
   margin: 9px 0 14px;
+}
+.context-usage {
+  border-top: 1px solid var(--line);
+  margin-top: 6px;
+  padding-top: 16px;
+}
+.context-usage-row {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.context-usage-row label {
+  font-size: 0.85rem;
+}
+.context-usage input[type="number"] {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 8px 10px;
+  width: 100%;
+}
+.context-help {
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  margin: 8px 0 0;
 }
 .form-footer {
   border-top: 1px solid var(--line);
