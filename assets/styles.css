@@ -79,7 +79,7 @@ body {
   padding: 8px 10px;
 }
 .preferences select {
-  text-align: center;
+  text-align: left;
 }
 .theme-toggle {
   align-items: center;

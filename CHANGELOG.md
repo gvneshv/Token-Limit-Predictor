@@ -1,24 +1,76 @@
 # Changelog
 
-## Unreleased
+All notable changes to this project are documented in this file.
 
-- Filled in the real GitHub Pages URL across canonical, Open Graph/Twitter, sitemap, and robots.txt.
-- Added a favicon, PWA manifest icon, Open Graph/Twitter share image, sitemap.xml, and MIT license.
-- Refreshed every model profile to each provider's current lineup as of 2026-08-01 (OpenAI GPT-5.6 Luna/Terra/Sol, Anthropic Claude Haiku 4.5/Sonnet 5/Opus 4.8, Google Gemini 3.5/3.6 Flash tiers, xAI Grok 4.5, Cohere Command A+, Groq's Qwen3.6 27B replacing the deprecated Llama 3.3 70B, and Cursor Router replacing Cursor Auto) and added a visible "specs last checked" note plus source-link updates, since provider lineups change every few weeks.
-- Added an optional "context already used" field (percent or tokens) so returning users can factor an ongoing conversation into the estimate; limit-pressure and the split recommendation now account for it, with a dedicated "start a fresh conversation" recommendation when projected usage is likely close to the model's context window. Added help text on how to find or estimate that number, and a note that attachments (files, images, documents) can't be accounted for.
-- Replaced the System/Light/Dark theme dropdown with a single light/dark toggle button; the initial state still follows the OS preference, an explicit choice just overrides it.
-- Fixed the model-choice field overlapping surrounding text at larger font sizes by stacking its label above the select and adding top margin.
-- Added static-site SEO foundations: robots directives, web-app manifest, Open Graph/Twitter text metadata, and JSON-LD application data.
-- Added static fallbacks for model selection and profile-source links.
-- Restored native dropdown indicators, improved headline tracking for Cyrillic, and documented frontend maintenance intent in source comments.
-- Rebuilt the app as a static GitHub Pages-compatible website with no backend or dependencies.
-- Added 13 documented model profiles across OpenAI, Anthropic, Google, Groq, Perplexity, and Cursor.
-- Corrected the empty-result state so it is replaced, rather than displayed above, an estimate.
-- Reworked the estimation formula so profile response and reasoning factors change medium and high difficulty outcomes.
-- Reworked the dark theme and made background gradients non-repeating.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 0.1.0 - 2026-07-28
+## [1.0.0] - 2026-08-05
 
-- Added a privacy-first FastAPI token-limit prediction app.
-- Added a responsive light/dark interface and deterministic prediction engine.
-- Added unit tests and local run documentation.
+First public release: a full rewrite from the original FastAPI prototype into
+a static, GitHub Pages-ready application, plus everything needed to publish
+and maintain it.
+
+### Added
+
+- Static, dependency-free app that runs entirely client-side - no backend,
+  build step, or account required.
+- 16 documented model profiles across OpenAI, Anthropic, Google, Groq,
+  Perplexity, Cursor, xAI, Mistral, and Cohere, each linked to its
+  provider's own model documentation.
+- Optional "context already used" field (percent or tokens) so an ongoing
+  conversation can be factored into the estimate, with guidance on where to
+  find that number or how to estimate it, and a note that file/image
+  attachments can't be accounted for.
+- "Context so far" result row and a dedicated recommendation to start a
+  fresh conversation when projected usage is likely close to a model's
+  context window.
+- A visible "model specs last checked" note and per-provider source links.
+- Light/dark theme toggle that defaults to the OS preference until the user
+  picks explicitly.
+- Full EN/UK localization, including result content (not just labels).
+- SEO and GitHub Pages readiness: sitemap.xml, canonical/Open Graph/Twitter
+  metadata, a brand favicon and PWA manifest icon, an Open Graph share
+  image, JSON-LD application data, and robots directives.
+- MIT license.
+
+### Changed
+
+- Refreshed every model profile to each provider's lineup as of 2026-07-29
+  (OpenAI GPT-5.6 Luna/Terra/Sol; Anthropic Claude Haiku 4.5, Sonnet 5,
+  Opus 4.8; Google Gemini 3.5 Flash-Lite/3.5 Flash/3.6 Flash; xAI Grok 4.5;
+  Cohere Command A+; Groq's Qwen3.6 27B replacing the deprecated Llama 3.3
+  70B; Cursor Router replacing Cursor Auto).
+- Reworked the estimation formula so response/reasoning factors affect
+  medium- and high-difficulty outcomes, and folded context-window pressure
+  into the limit-pressure calculation alongside the existing reasoning
+  budget.
+- Replaced the System/Light/Dark theme dropdown with a single toggle
+  button.
+- Model-choice field now stacks its label above the dropdown instead of
+  sitting inline, so it no longer crowds surrounding text at larger font
+  sizes.
+- Restored native dropdown indicators, improved headline tracking for
+  Cyrillic, and made background gradients non-repeating.
+
+### Fixed
+
+- Result panel (token counts, difficulty, limit pressure, context summary,
+  recommendation, note, and the submit button label) now re-translates
+  immediately on a language switch, instead of staying in whichever
+  language was active when the estimate was last calculated.
+- Empty-result state now replaces, rather than displays above, an
+  estimate.
+- No-script `<select>` fallback and the default profile id no longer
+  reference retired model ids.
+
+## [0.1.0] - 2026-07-28
+
+### Added
+
+- Privacy-first FastAPI token-limit prediction app.
+- Responsive light/dark interface and deterministic prediction engine.
+- Unit tests and local run documentation.
+
+[1.0.0]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.0
+[0.1.0]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v0.1.0

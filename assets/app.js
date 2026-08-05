@@ -1,10 +1,8 @@
 // Public model characteristics used by the local-only estimation heuristic.
-// Context window and max output figures are drawn from each provider's own
-// model docs (linked in the "Profile sources" list in index.html) and were
-// last cross-checked 2026-08-01. Providers revise these figures often —
-// several changed twice in the months prior to this check — so treat exact
-// numbers as approximate and re-verify against the source link before
-// relying on them for capacity planning.
+// Context window and max output figures are drawn from each provider's own model docs
+// (linked in the "Profile sources" list in index.html) and were last cross-checked 2026-08-01.
+// Providers revise these figures often - several changed twice in the months prior to this check
+// - so treat exact numbers as approximate and re-verify against the source link before relying on them for capacity planning.
 const PROFILES_LAST_VERIFIED = "2026-08-01";
 
 const profiles = [
@@ -227,15 +225,15 @@ const text = {
     routed:
       "Cursor Router routes between models, so this is a conservative planning profile.",
     specsFreshness:
-      "Model specs last checked {date}. Providers revise context and output limits often — verify against the linked source before relying on exact numbers.",
+      "Model specs last checked {date}. Providers revise context and output limits often - verify against the linked source before relying on exact numbers.",
     contextUsedLabel: "Context already used (optional)",
     unitPercent: "% used",
     unitTokens: "Tokens used",
     contextUsedPlaceholder: "e.g. 40",
     contextHelp:
-      "Some chat interfaces show a context or usage meter — a percentage, a token count, or a \u201cthis conversation is getting long\u201d warning — use that number if yours has one. If it doesn't, estimate instead: a fresh chat is close to 0%, a short back-and-forth is roughly 15\u201330%, a long session is 50\u201370%, and if you've noticed the assistant forgetting earlier details or seen a length warning, treat it as 80%+.",
+      "Some chat interfaces show a context or usage meter - a percentage, a token count, or a \u201cthis conversation is getting long\u201d warning - use that number if yours has one. If it doesn't, estimate instead: a fresh chat is close to 0%, a short back-and-forth is roughly 15\u201330%, a long session is 50\u201370%, and if you've noticed the assistant forgetting earlier details or seen a length warning, treat it as 80%+.",
     attachmentsNote:
-      "Planning to attach files, images, or other documents too? This estimate can't account for them — we have no way to know their size or content — so treat the result as a floor, not a guarantee.",
+      "Planning to attach files, images, or other documents too? This estimate can't account for them - we have no way to know their size or content - so treat the result as a floor, not a guarantee.",
     recommendationOne: "This should fit as one focused prompt.",
     recommendationParts: "Break the request into {parts} parts.",
     recommendationFresh:
@@ -243,57 +241,57 @@ const text = {
     note: "Based on local input analysis and the selected profile. Actual usage depends on instructions, tools, and provider settings.",
   },
   uk: {
-    eyebrow: "Приватне планування запитів",
-    headline: "Оцініть запит до відправлення.",
+    eyebrow: "Попереднє планування запиту",
+    headline: "Оцініть навантаження перед відправкою.",
     intro:
-      "Подивіться, як запит може поводитись у різних профілях AI. Текст залишається у вашому браузері.",
+      "Дізнайтеся, як ваш запит працюватиме з різними моделями штучного інтелекту. Текст залишається лише у вашому браузері.",
     languageLabel: "Мова",
     themeLabel: "Тема",
     yourRequest: "Ваш запит",
-    placeholder: "Опишіть, з чим вам потрібна допомога...",
-    estimateProfile: "Профіль AI-моделі",
+    placeholder: "Опишіть, що саме вам потрібно зробити...",
+    estimateProfile: "Профіль ШІ-моделі",
     privacy:
-      "Запит не надсилається й не зберігається. Локальна оцінка не перевіряє квоти провайдера.",
+      "Ваш запит нікуди не надсилається і не зберігається. Цей розрахунок є приблизним і виконується прямо на вашому пристрої, він не перевіряє ліміти вашого тарифного плану.",
     submit: "Оцінити запит",
-    empty: "Ваша оцінка з’явиться тут.",
+    empty: "Результат оцінки з'явиться тут.",
     model: "Профіль моделі",
     expectedResponse: "Очікувана відповідь",
-    estimatedWork: "Оцінена загальна робота",
+    estimatedWork: "Орієнтовний обсяг роботи",
     difficulty: "Рівень складності",
-    limitLikelihood: "Тиск на ліміт",
-    contextSoFar: "Контекст на разі",
+    limitLikelihood: "Рівень навантаження на ліміти",
+    contextSoFar: "Контекст на даний момент",
     contextSummary:
       "{used} / {context} {tokensLabel} ({percent}%) · залишилось ~{remaining}",
     recommendationLabel: "Рекомендація",
-    methodologySummary: "Як працює оцінка",
+    methodologySummary: "Як працює ця оцінка?",
     methodologyText:
-      "Калькулятор локально оцінює розмір вхідного тексту, виявляє сигнали складності, а потім застосовує опубліковані контекст і бюджет відповіді профілю. «Загальна робота» містить консервативний резерв для міркувань thinking-моделей. Жодна модель не викликається, ліміти вашого облікового запису невідомі.",
+      "Калькулятор рахує приблизну довжину вашого тексту, шукає складні завдання, а потім зіставляє це з офіційними характеристиками обраної моделі штучного інтелекту. «Орієнтовний обсяг роботи» вже враховує запас на «роздуми» для розумних моделей. Калькулятор не зв'язується з серверами штучного інтелекту і не знає обмежень вашого особистого акаунта.",
     footer:
-      "Локальні оцінки. Не є офіційною гарантією токенів, контексту чи лімітів облікового запису.",
+      "Розрахунок відбувається локально на вашому пристрої. Не є офіційною гарантією токенів, контексту чи лімітів облікового запису.",
     calculating: "Обчислення…",
     tokens: "токенів",
     low: "Низький",
     medium: "Середній",
     high: "Високий",
-    source: "Джерела профілів",
+    source: "Джерела даних про моделі",
     profile: "Контекст: {context} · макс. відповідь: {output}",
     routed:
-      "Cursor Router розподіляє запити між моделями, тому це консервативний профіль планування.",
+      "Інструмент «Cursor Router» перемикається між різними моделями, тому тут показано найбільш обережний (запасний) варіант розрахунку.",
     specsFreshness:
-      "Характеристики моделей востаннє перевірено {date}. Провайдери часто змінюють контекст і ліміти відповіді — перевіряйте за посиланням на джерело, перш ніж покладатися на точні цифри.",
-    contextUsedLabel: "Контекст уже використано (необов’язково)",
+      "Характеристики моделей востаннє перевірялися {date}. Розробники часто змінюють ліміти пам'яті та відповідей - звіряйтеся з офіційними сайтами, якщо вам потрібні точні цифри.",
+    contextUsedLabel: "Контекст, який уже використано (необов’язково)",
     unitPercent: "% використано",
     unitTokens: "Токенів використано",
-    contextUsedPlaceholder: "напр. 40",
+    contextUsedPlaceholder: "наприклад 40",
     contextHelp:
-      "Деякі чат-інтерфейси показують індикатор контексту чи використання — відсоток, кількість токенів або попередження «розмова стає задовгою» — використайте це число, якщо воно є. Якщо ні, оцініть самостійно: нова розмова — близько 0%, короткий обмін повідомленнями — приблизно 15–30%, довга сесія — 50–70%, а якщо ви помітили, що асистент забуває ранні деталі, або бачили попередження про довжину, вважайте це 80%+.",
+      "Деякі чат-інтерфейси показують індикатор контексту чи використання - відсоток, кількість токенів або попередження «чат/розмова стає задовгою» - використайте це число, якщо воно є. Якщо ні, оцініть самостійно: новий чат - близько 0%, короткий обмін повідомленнями - приблизно 15–30%, довга сесія - 50–70%, а якщо ви помітили, що асистент забуває ранні деталі, або бачили попередження про довжину, вважайте це 80%+.",
     attachmentsNote:
-      "Плануєте також долучити файли, зображення чи інші документи? Ця оцінка не може їх врахувати — ми не знаємо їхній розмір чи вміст — тож сприймайте результат як мінімум, а не гарантію.",
-    recommendationOne: "Це має вміститись в один сфокусований запит.",
+      "Плануєте також долучити файли, зображення чи інші документи? Ця оцінка не може їх врахувати - ми не знаємо їхній розмір чи вміст - тож сприймайте результат як мінімум, а не гарантію.",
+    recommendationOne: "Цей текст має поміститися в один чіткий запит.",
     recommendationParts: "Розділіть запит на {parts} частини.",
     recommendationFresh:
-      "Ця розмова, ймовірно, близька до ліміту контексту моделі. Розгляньте початок нової розмови або стисніть попередні повідомлення, перш ніж продовжити.",
-    note: "Засновано на локальному аналізі та вибраному профілі. Фактичне використання залежить від інструкцій, інструментів і налаштувань провайдера.",
+      "Цей чат, ймовірно, близький до ліміту контексту моделі. Розгляньте початок нового чату або стисніть попередні повідомлення, перш ніж продовжити.",
+    note: "Оцінка базується на аналізі вашого тексту та обраній моделі. Реальні витрати залежать від інструкцій, підключених інструментів та налаштувань платформи.",
   },
 };
 
@@ -391,6 +389,7 @@ function applyLanguage(value) {
   updateProfileNote();
   renderSources();
   updateSpecsFreshness();
+  renderResult();
 }
 /** Return the theme currently in effect, falling back to the OS preference. */
 function effectiveTheme() {
@@ -494,6 +493,53 @@ function predict(value, profile, usedTokens) {
 function set(id, value) {
   document.querySelector(id).textContent = value;
 }
+// The most recent estimate, kept so a language switch can redraw the result panel in the new locale without recomputing anything.
+let lastProfile = null;
+let lastResult = null;
+let lastUsedTokens = 0;
+/** Redraw every translated result field from the cached last estimate. */
+function renderResult() {
+  if (!lastProfile || !lastResult) return;
+  const copy = text[locale];
+  const profile = lastProfile;
+  const result = lastResult;
+  const usedTokens = lastUsedTokens;
+  set("#result-model", profile.name);
+  set("#provider", profile.group);
+  set("#request-tokens", `${format(result.request)} ${copy.tokens}`);
+  set(
+    "#response-tokens",
+    `${format(result.min)}–${format(result.max)} ${copy.tokens}`,
+  );
+  set("#work-tokens", `${format(result.work)} ${copy.tokens}`);
+  set("#difficulty", copy[result.difficulty]);
+  set("#probability", copy[result.pressure]);
+  const contextRow = document.querySelector("#context-row");
+  if (usedTokens > 0) {
+    contextRow.hidden = false;
+    set(
+      "#context-summary",
+      replace(copy.contextSummary, {
+        used: format(usedTokens),
+        context: format(profile.context),
+        tokensLabel: copy.tokens,
+        percent: Math.round((usedTokens / profile.context) * 100),
+        remaining: format(result.remaining),
+      }),
+    );
+  } else {
+    contextRow.hidden = true;
+  }
+  set(
+    "#recommendation",
+    usedTokens > 0 && result.contextRatio > 0.75
+      ? copy.recommendationFresh
+      : result.parts === 1
+        ? copy.recommendationOne
+        : replace(copy.recommendationParts, { parts: result.parts }),
+  );
+  set("#note", copy.note);
+}
 // Keep the browser-side character limit visible as the user types.
 message.addEventListener("input", () => {
   counter.textContent = `${format(message.value.length)} / 50,000`;
@@ -509,59 +555,26 @@ const storedTheme = localStorage.getItem("tlp-theme");
 if (storedTheme) {
   applyTheme(storedTheme);
 } else {
-  // No explicit choice yet: follow the OS preference (handled in CSS) and
-  // just sync the toggle icon/state to match it.
+  // No explicit choice yet: follow the OS preference (handled in CSS) and just sync the toggle icon/state to match it.
   theme.setAttribute("aria-pressed", String(effectiveTheme() === "dark"));
 }
 // Calculate on the next frame so the loading label can paint before the result.
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const button = form.querySelector("button");
+  const label = document.querySelector("#submit-label");
   button.disabled = true;
-  button.textContent = text[locale].calculating;
+  label.textContent = text[locale].calculating;
   requestAnimationFrame(() => {
     const profile = selectedProfile();
     const usedTokens = resolveContextUsed(profile);
-    const result = predict(message.value, profile, usedTokens);
-    const copy = text[locale];
-    set("#result-model", profile.name);
-    set("#provider", profile.group);
-    set("#request-tokens", `${format(result.request)} ${copy.tokens}`);
-    set(
-      "#response-tokens",
-      `${format(result.min)}–${format(result.max)} ${copy.tokens}`,
-    );
-    set("#work-tokens", `${format(result.work)} ${copy.tokens}`);
-    set("#difficulty", copy[result.difficulty]);
-    set("#probability", copy[result.pressure]);
-    const contextRow = document.querySelector("#context-row");
-    if (usedTokens > 0) {
-      contextRow.hidden = false;
-      set(
-        "#context-summary",
-        replace(copy.contextSummary, {
-          used: format(usedTokens),
-          context: format(profile.context),
-          tokensLabel: copy.tokens,
-          percent: Math.round((usedTokens / profile.context) * 100),
-          remaining: format(result.remaining),
-        }),
-      );
-    } else {
-      contextRow.hidden = true;
-    }
-    set(
-      "#recommendation",
-      usedTokens > 0 && result.contextRatio > 0.75
-        ? copy.recommendationFresh
-        : result.parts === 1
-          ? copy.recommendationOne
-          : replace(copy.recommendationParts, { parts: result.parts }),
-    );
-    set("#note", copy.note);
+    lastProfile = profile;
+    lastResult = predict(message.value, profile, usedTokens);
+    lastUsedTokens = usedTokens;
+    renderResult();
     document.querySelector("#empty-state").hidden = true;
     document.querySelector("#result-content").hidden = false;
     button.disabled = false;
-    button.innerHTML = `<span>${copy.submit}</span> <span aria-hidden="true">→</span>`;
+    label.textContent = text[locale].submit;
   });
 });
