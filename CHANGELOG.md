@@ -5,6 +5,12 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-08-08
+
+### Added
+
+- Footer credit line linking to the author's GitHub and LinkedIn profiles.
+
 ## [1.0.0] - 2026-08-05
 
 First public release: a full rewrite from the original FastAPI prototype into
@@ -72,5 +78,6 @@ and maintain it.
 - Responsive light/dark interface and deterministic prediction engine.
 - Unit tests and local run documentation.
 
+[1.0.1]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.1
 [1.0.0]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.0
 [0.1.0]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v0.1.0

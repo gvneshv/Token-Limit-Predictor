@@ -215,6 +215,7 @@ const text = {
       "The calculator counts a local approximation of your input, detects complexity signals, then applies a published model-profile context and output budget. “Estimated total work” includes a conservative reasoning allowance for thinking models. It does not call any model or know your account limits.",
     footer:
       "Local-only estimates. Not an official token, context-window, or account-limit guarantee.",
+    madeBy: "Made by",
     calculating: "Calculating…",
     tokens: "tokens",
     low: "Low",
@@ -268,6 +269,7 @@ const text = {
       "Калькулятор рахує приблизну довжину вашого тексту, шукає складні завдання, а потім зіставляє це з офіційними характеристиками обраної моделі штучного інтелекту. «Орієнтовний обсяг роботи» вже враховує запас на «роздуми» для розумних моделей. Калькулятор не зв'язується з серверами штучного інтелекту і не знає обмежень вашого особистого акаунта.",
     footer:
       "Розрахунок відбувається локально на вашому пристрої. Не є офіційною гарантією токенів, контексту чи лімітів облікового запису.",
+    madeBy: "Автор:",
     calculating: "Обчислення…",
     tokens: "токенів",
     low: "Низький",

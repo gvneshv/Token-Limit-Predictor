@@ -376,6 +376,19 @@ footer {
   margin-top: 22px;
   text-align: center;
 }
+footer p {
+  margin: 0;
+}
+.credit {
+  margin-top: 6px !important;
+}
+.credit a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.credit a:hover {
+  text-decoration: underline;
+}
 .sr-only {
   clip: rect(0, 0, 0, 0);
   height: 1px;
