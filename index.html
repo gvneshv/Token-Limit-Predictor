@@ -10,21 +10,39 @@
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="author" content="Token Limit Predictor contributors" />
     <meta name="theme-color" content="#f5f7fb" />
-    <link rel="canonical" href="https://gvneshv.github.io/Token-Limit-Predictor/" />
+    <link
+      rel="canonical"
+      href="https://gvneshv.github.io/Token-Limit-Predictor/"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Token Lens" />
     <meta property="og:title" content="Token Lens | AI prompt estimator" />
-    <meta property="og:description" content="Estimate prompt size, response range, and model-specific token pressure locally in your browser." />
-    <meta property="og:url" content="https://gvneshv.github.io/Token-Limit-Predictor/" />
-    <meta property="og:image" content="https://gvneshv.github.io/Token-Limit-Predictor/assets/og-image.png" />
+    <meta
+      property="og:description"
+      content="Estimate prompt size, response range, and model-specific token pressure locally in your browser."
+    />
+    <meta
+      property="og:url"
+      content="https://gvneshv.github.io/Token-Limit-Predictor/"
+    />
+    <meta
+      property="og:image"
+      content="https://gvneshv.github.io/Token-Limit-Predictor/assets/og-image.png"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="uk_UA" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Token Lens | AI prompt estimator" />
-    <meta name="twitter:description" content="Estimate prompt size, response range, and model-specific token pressure locally in your browser." />
-    <meta name="twitter:image" content="https://gvneshv.github.io/Token-Limit-Predictor/assets/og-image.png" />
+    <meta
+      name="twitter:description"
+      content="Estimate prompt size, response range, and model-specific token pressure locally in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://gvneshv.github.io/Token-Limit-Predictor/assets/og-image.png"
+    />
     <link rel="manifest" href="site.webmanifest" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/favicon.svg" />
@@ -57,9 +75,18 @@
               class="theme-toggle"
               aria-pressed="false"
             >
-              <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <svg
+                class="icon-sun"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
                 <circle cx="12" cy="12" r="4.4" fill="currentColor" />
-                <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <g
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                >
                   <path d="M12 2.5v3" />
                   <path d="M12 18.5v3" />
                   <path d="M4.2 4.2l2.1 2.1" />
@@ -70,7 +97,12 @@
                   <path d="M17.7 6.3l2.1-2.1" />
                 </g>
               </svg>
-              <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <svg
+                class="icon-moon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
                 <path
                   fill="currentColor"
                   d="M20.4 14.7A8.6 8.6 0 1 1 9.3 3.6a7 7 0 0 0 11.1 11.1Z"
@@ -112,12 +144,16 @@
               <optgroup label="Anthropic">
                 <option value="claude-haiku-4-5">Claude Haiku 4.5</option>
                 <option value="claude-sonnet-5">Claude Sonnet 5</option>
-                <option value="claude-opus-4-8">Claude Opus 4.8</option>
+                <option value="claude-opus-5">Claude Opus 5</option>
+                <option value="claude-fable-5-1">Claude Fable 5.1</option>
               </optgroup>
               <optgroup label="Google">
-                <option value="gemini-3-5-flash-lite">Gemini 3.5 Flash-Lite</option>
-                <option value="gemini-3-5-flash">Gemini 3.5 Flash</option>
+                <option value="gemini-3-1-flash-lite">
+                  Gemini 3.1 Flash-Lite
+                </option>
                 <option value="gemini-3-6-flash">Gemini 3.6 Flash</option>
+                <option value="gemini-3-7-flash">Gemini 3.7 Flash</option>
+                <option value="gemini-3-8-flash">Gemini 3.8 Flash</option>
               </optgroup>
               <optgroup label="Groq">
                 <option value="qwen3-6-27b-groq">Qwen3.6 27B on Groq</option>
@@ -130,10 +166,11 @@
                 <option value="cursor-router">Cursor Router</option>
               </optgroup>
               <optgroup label="xAI">
-                <option value="grok-4-5">Grok 4.5</option>
+                <option value="grok-4-6">Grok 4.6</option>
               </optgroup>
               <optgroup label="Mistral">
                 <option value="mistral-large-3">Mistral Large 3</option>
+                <option value="mistral-medium-3-5">Mistral Medium 3.5</option>
               </optgroup>
               <optgroup label="Cohere">
                 <option value="command-a-plus">Cohere Command A+</option>
@@ -148,7 +185,9 @@
               >
               <select id="context-unit" aria-label="Unit">
                 <option value="percent" data-i18n="unitPercent">% used</option>
-                <option value="tokens" data-i18n="unitTokens">Tokens used</option>
+                <option value="tokens" data-i18n="unitTokens">
+                  Tokens used
+                </option>
               </select>
             </div>
             <input
@@ -161,19 +200,18 @@
               placeholder="e.g. 40"
             />
             <p class="context-help" data-i18n="contextHelp">
-              Some chat interfaces show a context or usage meter - a
-              percentage, a token count, or a "this conversation is getting
-              long" warning - use that number if yours has one. If it
-              doesn't, estimate instead: a fresh chat is close to 0%, a
-              short back-and-forth is roughly 15–30%, a long session is
-              50–70%, and if you've noticed the assistant forgetting
-              earlier details or seen a length warning, treat it as 80%+.
+              Some chat interfaces show a context or usage meter - a percentage,
+              a token count, or a "this conversation is getting long" warning -
+              use that number if yours has one. If it doesn't, estimate instead:
+              a fresh chat is close to 0%, a short back-and-forth is roughly
+              15–30%, a long session is 50–70%, and if you've noticed the
+              assistant forgetting earlier details or seen a length warning,
+              treat it as 80%+.
             </p>
             <p class="context-help" data-i18n="attachmentsNote">
-              Planning to attach files, images, or other documents too?
-              This estimate can't account for them - we have no way to
-              know their size or content - so treat the result as a floor,
-              not a guarantee.
+              Planning to attach files, images, or other documents too? This
+              estimate can't account for them - we have no way to know their
+              size or content - so treat the result as a floor, not a guarantee.
             </p>
           </div>
           <div class="form-footer">
@@ -254,23 +292,72 @@
           reasoning allowance for thinking models. It does not call any model or
           know your account limits.
         </p>
-        <p id="specs-freshness" class="specs-freshness" data-i18n="specsFreshness">
-          Model specs last checked 2026-08-01. Providers revise context and
-          output limits often - verify against the linked source before
-          relying on exact numbers.
+        <p
+          id="specs-freshness"
+          class="specs-freshness"
+          data-i18n="specsFreshness"
+        >
+          Model specs last checked 2026-09-14. Providers revise context and
+          output limits often - verify against the linked source before relying
+          on exact numbers.
         </p>
         <div id="sources">
-          <p class="source-title">Profile sources</p>
+          <p class="source-title" data-i18n="source">Profile sources</p>
           <div class="source-list">
-            <a href="https://platform.openai.com/docs/models" target="_blank" rel="noreferrer">OpenAI</a>
-            <a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noreferrer">Anthropic</a>
-            <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noreferrer">Google</a>
-            <a href="https://console.groq.com/docs/models" target="_blank" rel="noreferrer">Groq</a>
-            <a href="https://docs.perplexity.ai/docs/sonar/models/sonar" target="_blank" rel="noreferrer">Perplexity</a>
-            <a href="https://cursor.com/help/models-and-usage/available-models" target="_blank" rel="noreferrer">Cursor</a>
-            <a href="https://docs.x.ai/developers/models" target="_blank" rel="noreferrer">xAI</a>
-            <a href="https://docs.mistral.ai/models" target="_blank" rel="noreferrer">Mistral</a>
-            <a href="https://docs.cohere.com/docs/command-a-plus" target="_blank" rel="noreferrer">Cohere</a>
+            <a
+              href="https://platform.openai.com/docs/models"
+              target="_blank"
+              rel="noreferrer"
+              >OpenAI</a
+            >
+            <a
+              href="https://platform.claude.com/docs/en/about-claude/models/overview"
+              target="_blank"
+              rel="noreferrer"
+              >Anthropic</a
+            >
+            <a
+              href="https://ai.google.dev/gemini-api/docs/models"
+              target="_blank"
+              rel="noreferrer"
+              >Google</a
+            >
+            <a
+              href="https://console.groq.com/docs/models"
+              target="_blank"
+              rel="noreferrer"
+              >Groq</a
+            >
+            <a
+              href="https://docs.perplexity.ai/docs/sonar/models/sonar"
+              target="_blank"
+              rel="noreferrer"
+              >Perplexity</a
+            >
+            <a
+              href="https://cursor.com/help/models-and-usage/available-models"
+              target="_blank"
+              rel="noreferrer"
+              >Cursor</a
+            >
+            <a
+              href="https://docs.x.ai/developers/models"
+              target="_blank"
+              rel="noreferrer"
+              >xAI</a
+            >
+            <a
+              href="https://docs.mistral.ai/models"
+              target="_blank"
+              rel="noreferrer"
+              >Mistral</a
+            >
+            <a
+              href="https://docs.cohere.com/docs/command-a-plus"
+              target="_blank"
+              rel="noreferrer"
+              >Cohere</a
+            >
           </div>
         </div>
       </details>
@@ -294,9 +381,19 @@
         </p>
         <p class="credit">
           <span data-i18n="madeBy">Made by</span>
-          <a href="https://github.com/gvneshv" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a
+            href="https://github.com/gvneshv"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
           &middot;
-          <a href="https://www.linkedin.com/in/mykhailo-kalchenko/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a
+            href="https://www.linkedin.com/in/mykhailo-kalchenko/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
         </p>
       </footer>
     </main>

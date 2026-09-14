@@ -5,6 +5,27 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-09-14
+
+### Changed
+
+- Updated model specifications to reflect provider changes as of 2026-09-14.
+- Replaced Claude Opus 4.8 with Claude Opus 5 (newer generation).
+- Added Claude Fable 5.1 for demanding reasoning and long-horizon agentic work.
+- Replaced Gemini 3.5 Flash-Lite with Gemini 3.1 Flash-Lite (current lineup).
+- Added Gemini 3.7 Flash and Gemini 3.8 Flash (newer, more capable models).
+- Replaced Grok 4.5 with Grok 4.6 (xAI's latest flagship model).
+- Added Mistral Medium 3.5 with expanded 1M token context window.
+- Added deprecation notice for Perplexity Sonar (migrating to Agent API, supported until September 27, 2026).
+- Increased total model profiles from 16 to 19 across all providers.
+- Updated PROFILES_LAST_VERIFIED date from 2026-08-01 to 2026-09-14.
+
+### Fixed
+
+- Added conditional display of deprecation notices for models marked as deprecated.
+- Ensured deprecation notices appear in both English and Ukrainian languages.
+- Removed dynamic source list population to avoid duplicate provider names (e.g., multiple "Anthropic" links) and reverted to static HTML version with single provider links.
+
 ## [1.0.1] - 2026-08-08
 
 ### Added
@@ -78,6 +99,7 @@ and maintain it.
 - Responsive light/dark interface and deterministic prediction engine.
 - Unit tests and local run documentation.
 
+[1.0.2]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.2
 [1.0.1]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.1
 [1.0.0]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.0
 [0.1.0]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v0.1.0

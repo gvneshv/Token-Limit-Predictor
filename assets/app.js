@@ -1,9 +1,9 @@
 // Public model characteristics used by the local-only estimation heuristic.
 // Context window and max output figures are drawn from each provider's own model docs
-// (linked in the "Profile sources" list in index.html) and were last cross-checked 2026-08-01.
+// (linked in the "Profile sources" list in index.html) and were last cross-checked 2026-09-14.
 // Providers revise these figures often - several changed twice in the months prior to this check
 // - so treat exact numbers as approximate and re-verify against the source link before relying on them for capacity planning.
-const PROFILES_LAST_VERIFIED = "2026-08-01";
+const PROFILES_LAST_VERIFIED = "2026-09-14";
 
 const profiles = [
   {
@@ -48,7 +48,7 @@ const profiles = [
     responseFactor: 0.75,
     reasoningFactor: 1.1,
     budget: 24000,
-    source: "https://platform.claude.com/docs/en/about-claude/models/overview",
+    source: "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
   },
   {
     group: "Anthropic",
@@ -59,40 +59,41 @@ const profiles = [
     responseFactor: 1.1,
     reasoningFactor: 1.3,
     budget: 34000,
-    source: "https://platform.claude.com/docs/en/about-claude/models/overview",
+    source: "https://platform.claude.com/docs/en/models/sonnet-5/overview",
   },
   {
     group: "Anthropic",
-    id: "claude-opus-4-8",
-    name: "Claude Opus 4.8",
+    id: "claude-opus-5",
+    name: "Claude Opus 5",
     context: 1000000,
     output: 128000,
     responseFactor: 1.3,
     reasoningFactor: 1.7,
     budget: 46000,
-    source: "https://platform.claude.com/docs/en/about-claude/models/overview",
+    source: "https://platform.claude.com/docs/en/models/opus-5/overview",
+  },
+  {
+    group: "Anthropic",
+    id: "claude-fable-5-1",
+    name: "Claude Fable 5.1",
+    context: 1000000,
+    output: 128000,
+    responseFactor: 1.45,
+    reasoningFactor: 1.9,
+    budget: 60000,
+    source: "https://platform.claude.com/docs/en/models/fable-5-1/overview",
   },
   {
     group: "Google",
-    id: "gemini-3-5-flash-lite",
-    name: "Gemini 3.5 Flash-Lite",
+    id: "gemini-3-1-flash-lite",
+    name: "Gemini 3.1 Flash-Lite",
     context: 1000000,
     output: 65536,
     responseFactor: 0.68,
     reasoningFactor: 1,
     budget: 22000,
-    source: "https://ai.google.dev/gemini-api/docs/models",
-  },
-  {
-    group: "Google",
-    id: "gemini-3-5-flash",
-    name: "Gemini 3.5 Flash",
-    context: 1000000,
-    output: 65536,
-    responseFactor: 0.9,
-    reasoningFactor: 1.2,
-    budget: 34000,
-    source: "https://ai.google.dev/gemini-api/docs/models",
+    source:
+      "https://ai.google.dev/gemini-api/docs/models/gemini-3-1-flash-lite",
   },
   {
     group: "Google",
@@ -103,7 +104,29 @@ const profiles = [
     responseFactor: 1.05,
     reasoningFactor: 1.35,
     budget: 40000,
-    source: "https://ai.google.dev/gemini-api/docs/models",
+    source: "https://ai.google.dev/gemini-api/docs/models/gemini-3-6-flash",
+  },
+  {
+    group: "Google",
+    id: "gemini-3-7-flash",
+    name: "Gemini 3.7 Flash",
+    context: 1048576,
+    output: 65536,
+    responseFactor: 1.15,
+    reasoningFactor: 1.45,
+    budget: 45000,
+    source: "https://ai.google.dev/gemini-api/docs/models/gemini-3-7-flash",
+  },
+  {
+    group: "Google",
+    id: "gemini-3-8-flash",
+    name: "Gemini 3.8 Flash",
+    context: 1048576,
+    output: 65536,
+    responseFactor: 1.25,
+    reasoningFactor: 1.55,
+    budget: 50000,
+    source: "https://ai.google.dev/gemini-api/docs/models/gemini-3-8-flash",
   },
   {
     group: "Groq",
@@ -137,17 +160,18 @@ const profiles = [
     reasoningFactor: 1,
     budget: 24000,
     source: "https://docs.perplexity.ai/docs/sonar/models/sonar",
+    deprecated: true,
   },
   {
     group: "xAI",
-    id: "grok-4-5",
-    name: "Grok 4.5",
+    id: "grok-4-6",
+    name: "Grok 4.6",
     context: 500000,
     output: 64000,
-    responseFactor: 1.1,
-    reasoningFactor: 1.35,
-    budget: 34000,
-    source: "https://docs.x.ai/developers/models",
+    responseFactor: 1.15,
+    reasoningFactor: 1.45,
+    budget: 38000,
+    source: "https://docs.x.ai/developers/models/grok-4-6",
   },
   {
     group: "Mistral",
@@ -158,6 +182,17 @@ const profiles = [
     responseFactor: 0.98,
     reasoningFactor: 1.12,
     budget: 30000,
+    source: "https://docs.mistral.ai/models",
+  },
+  {
+    group: "Mistral",
+    id: "mistral-medium-3-5",
+    name: "Mistral Medium 3.5",
+    context: 1000000,
+    output: 128000,
+    responseFactor: 1.2,
+    reasoningFactor: 1.4,
+    budget: 42000,
     source: "https://docs.mistral.ai/models",
   },
   {
@@ -225,6 +260,8 @@ const text = {
     profile: "Context: {context} · max output: {output}",
     routed:
       "Cursor Router routes between models, so this is a conservative planning profile.",
+    deprecated:
+      "Note: Perplexity Sonar is being deprecated and migrated to Agent API. Support continues until September 27, 2026.",
     specsFreshness:
       "Model specs last checked {date}. Providers revise context and output limits often - verify against the linked source before relying on exact numbers.",
     contextUsedLabel: "Context already used (optional)",
@@ -279,6 +316,8 @@ const text = {
     profile: "Контекст: {context} · макс. відповідь: {output}",
     routed:
       "Інструмент «Cursor Router» перемикається між різними моделями, тому тут показано найбільш обережний (запасний) варіант розрахунку.",
+    deprecated:
+      "Примітка: Perplexity Sonar застарів і мігрує в Agent API. Підтримка триває до 27 вересня 2026 року.",
     specsFreshness:
       "Характеристики моделей востаннє перевірялися {date}. Розробники часто змінюють ліміти пам'яті та відповідей - звіряйтеся з офіційними сайтами, якщо вам потрібні точні цифри.",
     contextUsedLabel: "Контекст, який уже використано (необов’язково)",
@@ -321,12 +360,16 @@ function selectedProfile() {
 function updateProfileNote() {
   const p = selectedProfile();
   const copy = text[locale];
-  document.querySelector("#profile-note").textContent = p.routed
+  let note = p.routed
     ? copy.routed
     : replace(copy.profile, {
         context: format(p.context),
         output: format(p.output),
       });
+  if (p.deprecated && copy.deprecated) {
+    note += ". " + copy.deprecated;
+  }
+  document.querySelector("#profile-note").textContent = note;
 }
 /** Rebuild the model selector from profile data while preserving the selection. */
 function populateModels() {
@@ -345,26 +388,6 @@ function populateModels() {
   });
   model.value = prior;
   updateProfileNote();
-}
-/** Render source links in the active language while retaining safe static fallbacks. */
-function renderSources() {
-  const title = document.createElement("p");
-  title.className = "source-title";
-  title.textContent = text[locale].source;
-  const list = document.createElement("div");
-  list.className = "source-list";
-  [...new Map(profiles.map((p) => [p.source, p.group])).entries()].forEach(
-    ([url, group]) => {
-      const link = document.createElement("a");
-      link.href = url;
-      link.target = "_blank";
-      link.rel = "noreferrer";
-      link.textContent = group;
-      list.append(link);
-    },
-  );
-  const sources = document.querySelector("#sources");
-  sources.replaceChildren(title, list);
 }
 /** Show when the model specs were last checked against provider docs. */
 function updateSpecsFreshness() {
@@ -389,7 +412,6 @@ function applyLanguage(value) {
   localStorage.setItem("tlp-language", value);
   counter.textContent = `${format(message.value.length)} / 50,000`;
   updateProfileNote();
-  renderSources();
   updateSpecsFreshness();
   renderResult();
 }
