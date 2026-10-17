@@ -11,7 +11,7 @@ A private, static web app that estimates prompt size, likely response range, rea
 
 - Runs entirely in the browser with no server, database, account, analytics, or network calls.
 - Uses deterministic input, complexity, and model-profile heuristics.
-- Provides 19 profiles across OpenAI, Anthropic, Google, Groq, Perplexity, Cursor, xAI, Mistral, and Cohere, refreshed to each provider's current lineup as of 2026-09-14 (see the in-app "specs last checked" note and source links).
+- Provides 18 profiles across OpenAI, Anthropic, Google, Groq, Cursor, xAI, Mistral, and Cohere, refreshed to each provider's current lineup as of 2026-10-17 (see the in-app "specs last checked" note and source links).
 - Supports English/Ukrainian plus light, dark, and system-theme preferences, stored only in browser local storage.
 - Keeps model and documentation links in the HTML as graceful fallbacks, so essential reference material remains visible even if browser JavaScript is blocked.
 

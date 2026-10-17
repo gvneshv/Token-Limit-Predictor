@@ -137,14 +137,14 @@
             <!-- Keep model choices in HTML as a no-script fallback. JavaScript rebuilds this list from the same profiles. -->
             <select id="model" name="model">
               <optgroup label="OpenAI">
-                <option value="gpt-5-6-luna">GPT-5.6 Luna</option>
-                <option value="gpt-5-6-terra">GPT-5.6 Terra</option>
-                <option value="gpt-5-6-sol">GPT-5.6 Sol</option>
+                <option value="gpt-6-luna">GPT-6 Luna</option>
+                <option value="gpt-6-1-sol">GPT-6.1 Sol</option>
+                <option value="gpt-6-astra">GPT-6 Astra</option>
               </optgroup>
               <optgroup label="Anthropic">
-                <option value="claude-haiku-4-5">Claude Haiku 4.5</option>
-                <option value="claude-sonnet-5">Claude Sonnet 5</option>
-                <option value="claude-opus-5">Claude Opus 5</option>
+                <option value="claude-haiku-5-5">Claude Haiku 5.5</option>
+                <option value="claude-sonnet-5-5">Claude Sonnet 5.5</option>
+                <option value="claude-opus-5-5">Claude Opus 5.5</option>
                 <option value="claude-fable-5-1">Claude Fable 5.1</option>
               </optgroup>
               <optgroup label="Google">
@@ -152,24 +152,21 @@
                   Gemini 3.1 Flash-Lite
                 </option>
                 <option value="gemini-3-6-flash">Gemini 3.6 Flash</option>
-                <option value="gemini-3-7-flash">Gemini 3.7 Flash</option>
                 <option value="gemini-3-8-flash">Gemini 3.8 Flash</option>
+                <option value="gemini-4-argon">Gemini 4 Argon</option>
               </optgroup>
               <optgroup label="Groq">
-                <option value="qwen3-6-27b-groq">Qwen3.6 27B on Groq</option>
+                <option value="qwen3-8-27b-groq">Qwen3.8 27B on Groq</option>
                 <option value="gpt-oss-120b">GPT-OSS 120B on Groq</option>
-              </optgroup>
-              <optgroup label="Perplexity">
-                <option value="sonar">Perplexity Sonar</option>
               </optgroup>
               <optgroup label="Cursor">
                 <option value="cursor-router">Cursor Router</option>
               </optgroup>
               <optgroup label="xAI">
-                <option value="grok-4-6">Grok 4.6</option>
+                <option value="grok-4-7">Grok 4.7</option>
               </optgroup>
               <optgroup label="Mistral">
-                <option value="mistral-large-3">Mistral Large 3</option>
+                <option value="mistral-large-4">Mistral Large 4</option>
                 <option value="mistral-medium-3-5">Mistral Medium 3.5</option>
               </optgroup>
               <optgroup label="Cohere">
@@ -297,7 +294,7 @@
           class="specs-freshness"
           data-i18n="specsFreshness"
         >
-          Model specs last checked 2026-09-14. Providers revise context and
+          Model specs last checked 2026-10-17. Providers revise context and
           output limits often - verify against the linked source before relying
           on exact numbers.
         </p>
@@ -305,7 +302,7 @@
           <p class="source-title" data-i18n="source">Profile sources</p>
           <div class="source-list">
             <a
-              href="https://platform.openai.com/docs/models"
+              href="https://developers.openai.com/api/docs/models"
               target="_blank"
               rel="noreferrer"
               >OpenAI</a
@@ -327,12 +324,6 @@
               target="_blank"
               rel="noreferrer"
               >Groq</a
-            >
-            <a
-              href="https://docs.perplexity.ai/docs/sonar/models/sonar"
-              target="_blank"
-              rel="noreferrer"
-              >Perplexity</a
             >
             <a
               href="https://cursor.com/help/models-and-usage/available-models"

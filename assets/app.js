@@ -1,76 +1,76 @@
 // Public model characteristics used by the local-only estimation heuristic.
 // Context window and max output figures are drawn from each provider's own model docs
-// (linked in the "Profile sources" list in index.html) and were last cross-checked 2026-09-14.
+// (linked in the "Profile sources" list in index.html) and were last cross-checked 2026-10-17.
 // Providers revise these figures often - several changed twice in the months prior to this check
 // - so treat exact numbers as approximate and re-verify against the source link before relying on them for capacity planning.
-const PROFILES_LAST_VERIFIED = "2026-09-14";
+const PROFILES_LAST_VERIFIED = "2026-10-17";
 
 const profiles = [
   {
     group: "OpenAI",
-    id: "gpt-5-6-luna",
-    name: "GPT-5.6 Luna",
+    id: "gpt-6-luna",
+    name: "GPT-6 Luna",
     context: 1050000,
     output: 128000,
     responseFactor: 0.85,
     reasoningFactor: 1.05,
     budget: 30000,
-    source: "https://platform.openai.com/docs/models",
+    source: "https://developers.openai.com/api/docs/models",
   },
   {
     group: "OpenAI",
-    id: "gpt-5-6-terra",
-    name: "GPT-5.6 Terra",
+    id: "gpt-6-1-sol",
+    name: "GPT-6.1 Sol",
     context: 1050000,
     output: 128000,
     responseFactor: 1.05,
     reasoningFactor: 1.3,
     budget: 42000,
-    source: "https://platform.openai.com/docs/models",
+    source: "https://developers.openai.com/api/docs/models",
   },
   {
     group: "OpenAI",
-    id: "gpt-5-6-sol",
-    name: "GPT-5.6 Sol",
+    id: "gpt-6-astra",
+    name: "GPT-6 Astra",
     context: 1050000,
     output: 128000,
     responseFactor: 1.25,
     reasoningFactor: 1.6,
     budget: 55000,
-    source: "https://platform.openai.com/docs/models",
+    source: "https://developers.openai.com/api/docs/models",
   },
   {
     group: "Anthropic",
-    id: "claude-haiku-4-5",
-    name: "Claude Haiku 4.5",
-    context: 200000,
-    output: 64000,
+    id: "claude-haiku-5-5",
+    name: "Claude Haiku 5.5",
+    context: 1000000,
+    output: 128000,
     responseFactor: 0.75,
     reasoningFactor: 1.1,
     budget: 24000,
-    source: "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+    source: "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
   },
   {
     group: "Anthropic",
-    id: "claude-sonnet-5",
-    name: "Claude Sonnet 5",
+    id: "claude-sonnet-5-5",
+    name: "Claude Sonnet 5.5",
     context: 1000000,
-    output: 64000,
+    output: 128000,
     responseFactor: 1.1,
     reasoningFactor: 1.3,
     budget: 34000,
-    source: "https://platform.claude.com/docs/en/models/sonnet-5/overview",
+    source: "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
   },
   {
     group: "Anthropic",
-    id: "claude-opus-5",
-    name: "Claude Opus 5",
+    id: "claude-opus-5-5",
+    name: "Claude Opus 5.5",
     context: 1000000,
     output: 128000,
     responseFactor: 1.3,
     reasoningFactor: 1.7,
     budget: 46000,
-    source: "https://platform.claude.com/docs/en/models/opus-5/overview",
+    source: "https://platform.claude.com/docs/en/models/opus-5-5/overview",
   },
   {
     group: "Anthropic",
@@ -108,17 +108,6 @@ const profiles = [
   },
   {
     group: "Google",
-    id: "gemini-3-7-flash",
-    name: "Gemini 3.7 Flash",
-    context: 1048576,
-    output: 65536,
-    responseFactor: 1.15,
-    reasoningFactor: 1.45,
-    budget: 45000,
-    source: "https://ai.google.dev/gemini-api/docs/models/gemini-3-7-flash",
-  },
-  {
-    group: "Google",
     id: "gemini-3-8-flash",
     name: "Gemini 3.8 Flash",
     context: 1048576,
@@ -129,9 +118,20 @@ const profiles = [
     source: "https://ai.google.dev/gemini-api/docs/models/gemini-3-8-flash",
   },
   {
+    group: "Google",
+    id: "gemini-4-argon",
+    name: "Gemini 4 Argon",
+    context: 1000000,
+    output: 1000000,
+    responseFactor: 1.5,
+    reasoningFactor: 1.8,
+    budget: 65000,
+    source: "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon",
+  },
+  {
     group: "Groq",
-    id: "qwen3-6-27b-groq",
-    name: "Qwen3.6 27B on Groq",
+    id: "qwen3-8-27b-groq",
+    name: "Qwen3.8 27B on Groq",
     context: 131072,
     output: 32768,
     responseFactor: 0.82,
@@ -151,38 +151,26 @@ const profiles = [
     source: "https://console.groq.com/docs/models",
   },
   {
-    group: "Perplexity",
-    id: "sonar",
-    name: "Perplexity Sonar",
-    context: 128000,
-    output: 8192,
-    responseFactor: 0.76,
-    reasoningFactor: 1,
-    budget: 24000,
-    source: "https://docs.perplexity.ai/docs/sonar/models/sonar",
-    deprecated: true,
-  },
-  {
     group: "xAI",
-    id: "grok-4-6",
-    name: "Grok 4.6",
+    id: "grok-4-7",
+    name: "Grok 4.7",
     context: 500000,
     output: 64000,
-    responseFactor: 1.15,
-    reasoningFactor: 1.45,
-    budget: 38000,
-    source: "https://docs.x.ai/developers/models/grok-4-6",
+    responseFactor: 1.2,
+    reasoningFactor: 1.5,
+    budget: 40000,
+    source: "https://docs.x.ai/developers/models",
   },
   {
     group: "Mistral",
-    id: "mistral-large-3",
-    name: "Mistral Large 3",
-    context: 256000,
-    output: 32000,
-    responseFactor: 0.98,
-    reasoningFactor: 1.12,
-    budget: 30000,
-    source: "https://docs.mistral.ai/models",
+    id: "mistral-large-4",
+    name: "Mistral Large 4",
+    context: 1000000,
+    output: 128000,
+    responseFactor: 1.3,
+    reasoningFactor: 1.6,
+    budget: 48000,
+    source: "https://docs.mistral.ai/models/mistral-large-4",
   },
   {
     group: "Mistral",
@@ -260,8 +248,6 @@ const text = {
     profile: "Context: {context} · max output: {output}",
     routed:
       "Cursor Router routes between models, so this is a conservative planning profile.",
-    deprecated:
-      "Note: Perplexity Sonar is being deprecated and migrated to Agent API. Support continues until September 27, 2026.",
     specsFreshness:
       "Model specs last checked {date}. Providers revise context and output limits often - verify against the linked source before relying on exact numbers.",
     contextUsedLabel: "Context already used (optional)",
@@ -316,8 +302,6 @@ const text = {
     profile: "Контекст: {context} · макс. відповідь: {output}",
     routed:
       "Інструмент «Cursor Router» перемикається між різними моделями, тому тут показано найбільш обережний (запасний) варіант розрахунку.",
-    deprecated:
-      "Примітка: Perplexity Sonar застарів і мігрує в Agent API. Підтримка триває до 27 вересня 2026 року.",
     specsFreshness:
       "Характеристики моделей востаннє перевірялися {date}. Розробники часто змінюють ліміти пам'яті та відповідей - звіряйтеся з офіційними сайтами, якщо вам потрібні точні цифри.",
     contextUsedLabel: "Контекст, який уже використано (необов’язково)",
@@ -366,9 +350,6 @@ function updateProfileNote() {
         context: format(p.context),
         output: format(p.output),
       });
-  if (p.deprecated && copy.deprecated) {
-    note += ". " + copy.deprecated;
-  }
   document.querySelector("#profile-note").textContent = note;
 }
 /** Rebuild the model selector from profile data while preserving the selection. */

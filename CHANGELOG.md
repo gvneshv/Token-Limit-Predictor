@@ -5,6 +5,29 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-10-17
+
+### Changed
+
+- Updated model specifications to reflect major provider changes as of 2026-10-17.
+- Removed Perplexity Sonar (support ended September 27, 2026) and related deprecation logic.
+- Removed Perplexity source link from HTML documentation section.
+- Replaced entire OpenAI GPT-5.6 family with GPT-6 family (Luna, GPT-6.1 Sol, Astra) - major generational upgrade.
+- Updated Anthropic models to 5.5 generation: Haiku 5.5 (now 1M context, was 200K), Sonnet 5.5, Opus 5.5.
+- Removed deprecated Gemini 3.7 Flash, added Gemini 4 Argon (new flagship with 1M unified input-output).
+- Replaced Grok 4.6 with Grok 4.7 (xAI's latest flagship with improved verification).
+- Replaced deprecated Qwen3.6 27B with Qwen3.8 27B on Groq.
+- Replaced Mistral Large 3 with Mistral Large 4 (1T+ parameter MoE model with 1M context).
+- Updated OpenAI source link to new developers portal.
+- Updated PROFILES_LAST_VERIFIED date from 2026-09-14 to 2026-10-17.
+
+### Fixed
+
+- Reduced profile count from 19 to 18 (removed Perplexity Sonar and Gemini 3.7 Flash, added Gemini 4 Argon).
+- Removed deprecation logic and notices since Perplexity Sonar has been fully removed.
+- Updated HTML fallback model selector to match new profile lineup.
+- Updated verification date in static HTML content.
+
 ## [1.0.2] - 2026-09-14
 
 ### Changed
@@ -99,6 +122,7 @@ and maintain it.
 - Responsive light/dark interface and deterministic prediction engine.
 - Unit tests and local run documentation.
 
+[1.0.3]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.3
 [1.0.2]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.2
 [1.0.1]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.1
 [1.0.0]: https://github.com/gvneshv/Token-Limit-Predictor/releases/tag/v1.0.0
